@@ -15,7 +15,7 @@ public class SpawnTest : MonoBehaviour
 
     void SpawnAnimal()
     {
-       // int animalIndex = Random.Range(0, enemy.Length);
+       // int animalIndex = Random.Range(0,  enemy.Length);
 
         Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeInX, spawnRangeInX), 0.0f, positionZ);
 
