@@ -5,25 +5,29 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public float speed = 20.0f;
     public GameObject projectTilePrefab;
 
+    private float speed = 20.0f;
     private float horizontalInput;
     private float xRange = 18.5f;
+    private Vector3 add_Y_Height;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        add_Y_Height = new Vector3(0.0f,1.0f,0.0f);
+       // Debug.Log("........");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //Get input from keyboard from -1(left) to +1(right) in this case
         horizontalInput = Input.GetAxis("Horizontal");
+        //translates the player from left to right based on the keyboard input times direction given by the vector time delatatime times speed
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
 
+        //Checks the boundary on axis X (prevents character to move outof the setted range hold by the xRange variable)
         if(transform.position.x < -xRange)
         {
             transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
@@ -32,11 +36,20 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
 
-        //Fire
+        //Fire: if the key setted is pressed it will trigger an action.
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(projectTilePrefab, transform.position, transform.rotation);
+            //*1 Obs.
+            Instantiate(projectTilePrefab, transform.position + add_Y_Height, transform.rotation);
         }
 
     }
 }
+
+/*
+        Observations 
+
+  1- GetKey() -> Recognizes the input while holding down the button, so it will be true while the button is pressed
+ 
+ 
+ */

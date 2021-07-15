@@ -10,7 +10,7 @@ public class SpawnTest : MonoBehaviour
     private float spawnRangeInX = 18.0f;
     private float positionZ = 20;
     private float start = 1.5f;
-    private float delay = 2.0f;
+    private float delay = 5.0f;
 
 
     void SpawnAnimal()

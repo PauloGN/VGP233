@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyOutOfBounds : MonoBehaviour
 {
 
-    private float verticalBound = 32.0f;
+    private float verticalBound = 30.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,9 +17,12 @@ public class DestroyOutOfBounds : MonoBehaviour
     void Update()
     {
         //destroy the gameObject once it is outof bounds
-        if(transform.position.z > verticalBound || transform.position.z < -verticalBound)
+        if(transform.position.z > verticalBound )
         {
             Destroy(gameObject);
+        } else if (transform.position.z < -verticalBound)
+        {
+            Debug.Log("FOI PRO SACO.....(Game Over!)");
         }
 
 
