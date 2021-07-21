@@ -23,6 +23,7 @@ public class DestroyOutOfBounds : MonoBehaviour
         } else if (transform.position.z < -verticalBound)
         {
             Debug.Log("FOI PRO SACO.....(Game Over!)");
+            Destroy(gameObject);
         }
 
 
