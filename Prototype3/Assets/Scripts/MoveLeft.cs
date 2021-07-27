@@ -7,7 +7,7 @@ public class MoveLeft : MonoBehaviour
 
     private float speed = 20.0f;
     private PlayerController playerControllerREF;
-    private float leftBound = -9.0f;
+    private float leftBound = -9.0f;//limit to destroy objecs
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +19,13 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if game is not over move
         if (!playerControllerREF.isGameOver)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
         }
 
-        //using function compareTag to destroy just the obstacle when its position becomes less than -10 on X axis
+        //using function compareTag to destroy just the obstacle when its position becomes less than leftBound on X axis
         if (CompareTag("Obstacle") && transform.position.x < leftBound)
         {
             Destroy(gameObject);

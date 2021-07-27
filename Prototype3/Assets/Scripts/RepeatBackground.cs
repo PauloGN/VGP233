@@ -14,7 +14,7 @@ public class RepeatBackground : MonoBehaviour
         //gets the initial position of the background
         startPosition = transform.position;
         //gets the halft size in x dimention of the backgroundsize
-        halfSpriteWidth = GetComponent<BoxCollider>().size.x * 0.5f;
+        halfSpriteWidth = GetComponent<BoxCollider>().size.x * 0.5f;// box collider has the size of the sprite in all axis
 
     }
 

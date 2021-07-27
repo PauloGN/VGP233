@@ -23,6 +23,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnObstacle()
     {
+        //if game is not over spawn objects
         if (!playerControllerREF.isGameOver)
         {
             Instantiate(obstaclePrefab, spawnPosition, obstaclePrefab.transform.rotation);
