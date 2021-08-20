@@ -154,6 +154,12 @@ public class PlayerShooting : MonoBehaviour
                 Instantiate(metalImpact, hit.point, Quaternion.LookRotation(hit.normal));
             }
 
+            if (hit.transform.CompareTag("Explosive"))
+            {
+                hit.transform.gameObject.SendMessage("Explode");
+                Debug.Log("EXPLODE!");
+            }
+
         }
 
     }
@@ -172,6 +178,12 @@ public class PlayerShooting : MonoBehaviour
         Instantiate(grenadeExplosion, hit.point, Quaternion.LookRotation(hit.normal));
         playerSounds.PlayOneShot(grenadeSound);
         Hits();
+
+        if (hit.transform.CompareTag("Explosive"))
+        {
+            hit.transform.gameObject.SendMessage("Explode");
+        }
+
     }
 
     //Pick ups functionalities
