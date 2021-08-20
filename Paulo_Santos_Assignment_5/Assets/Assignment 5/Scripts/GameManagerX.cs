@@ -53,7 +53,7 @@ public class GameManagerX : MonoBehaviour
         }
     }
 
-
+    //Coutdown from gameTime to 0
     IEnumerator CountDownGameOver()
     {
         while (gameTime > 0 && isGameActive)
