@@ -14,6 +14,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]private AudioClip singleShoot;
     [SerializeField]private AudioClip rapidShoot;
     [SerializeField]private AudioClip grenadeSound;
+    [SerializeField]private AudioClip flameSound;
     //variables of control
     private bool rapidPlay = true;
     private bool shooting = true;
@@ -21,6 +22,8 @@ public class PlayerShooting : MonoBehaviour
     //Grenades
     [SerializeField] private GameObject grenadeSmoke;
     [SerializeField] private GameObject grenadeExplosion;
+    //Fire
+    [SerializeField] private GameObject flameStream;
 
 
     RaycastHit hit;
@@ -75,7 +78,7 @@ public class PlayerShooting : MonoBehaviour
        
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0))
             {
                 rapidPlay = true;
                 playerSounds.loop = false;
@@ -101,6 +104,36 @@ public class PlayerShooting : MonoBehaviour
                 }
 
             }
+        }
+
+        //FireStream Weap
+        if (SaveScript.WeaponID == 4)
+        {
+            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0));
+            if (isShooting)
+            {
+                flameStream.gameObject.SetActive(true);
+                if (rapidPlay)
+                {
+                    rapidPlay = false;
+                    playerSounds.loop = true;
+                    playerSounds.clip = flameSound;
+                    playerSounds.pitch = 0.1f;
+                    playerSounds.Play();
+
+                }
+            }
+
+
+            if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0))
+            {
+                flameStream.gameObject.SetActive(false);
+                rapidPlay = true;
+                playerSounds.loop = false;
+                playerSounds.pitch = 1;
+                playerSounds.Stop();
+            }
+
         }
 
 
@@ -139,5 +172,6 @@ public class PlayerShooting : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         Instantiate(grenadeExplosion, hit.point, Quaternion.LookRotation(hit.normal));
         playerSounds.PlayOneShot(grenadeSound);
+        Hits();
     }
 }
