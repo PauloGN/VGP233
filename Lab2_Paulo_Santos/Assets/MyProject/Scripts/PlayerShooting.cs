@@ -15,6 +15,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]private AudioClip rapidShoot;
     [SerializeField]private AudioClip grenadeSound;
     [SerializeField]private AudioClip flameSound;
+    [SerializeField]private AudioClip pickUpSound;
     //variables of control
     private bool rapidPlay = true;
     private bool shooting = true;
@@ -118,7 +119,6 @@ public class PlayerShooting : MonoBehaviour
                     rapidPlay = false;
                     playerSounds.loop = true;
                     playerSounds.clip = flameSound;
-                    playerSounds.pitch = 0.1f;
                     playerSounds.Play();
 
                 }
@@ -130,7 +130,6 @@ public class PlayerShooting : MonoBehaviour
                 flameStream.gameObject.SetActive(false);
                 rapidPlay = true;
                 playerSounds.loop = false;
-                playerSounds.pitch = 1;
                 playerSounds.Stop();
             }
 
@@ -174,4 +173,36 @@ public class PlayerShooting : MonoBehaviour
         playerSounds.PlayOneShot(grenadeSound);
         Hits();
     }
+
+    //Pick ups functionalities
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("RifleAmmo"))
+        {
+            SaveScript.WeaponID = 1;
+            playerSounds.PlayOneShot(pickUpSound);
+            Destroy(other.gameObject, 0.2f);
+        }
+        if (other.CompareTag("RapidFire"))
+        {
+            SaveScript.WeaponID = 2;
+            playerSounds.PlayOneShot(pickUpSound);
+            Destroy(other.gameObject, 0.2f);
+        }
+        if (other.CompareTag("GrenadeAmmo"))
+        {
+            SaveScript.WeaponID = 3;
+            playerSounds.PlayOneShot(pickUpSound);
+            Destroy(other.gameObject, 0.2f);
+        }
+
+        if (other.CompareTag("FlameAmmo"))
+        {
+            SaveScript.WeaponID = 4;
+            playerSounds.PlayOneShot(pickUpSound);
+            Destroy(other.gameObject, 0.2f);
+        }
+    }
+
+ 
 }

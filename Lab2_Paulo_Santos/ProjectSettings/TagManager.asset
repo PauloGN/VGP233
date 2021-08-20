@@ -7,6 +7,10 @@ TagManager:
   - Shootable
   - Stone
   - Metal
+  - RapidFire
+  - GrenadeAmmo
+  - FlameAmmo
+  - RifleAmmo
   layers:
   - Default
   - TransparentFX
