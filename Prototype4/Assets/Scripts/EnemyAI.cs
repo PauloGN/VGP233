@@ -8,6 +8,8 @@ public class EnemyAI : MonoBehaviour
     private GameObject playerREF;
     private Rigidbody enemyRB;
     private float speed;
+    private float speedRate = 1.03f;
+
     private float boundY = 15.0f;
 
     // Start is called before the first frame update
@@ -15,8 +17,8 @@ public class EnemyAI : MonoBehaviour
     {
         playerREF = GameObject.Find("Player");
         enemyRB = GetComponent<Rigidbody>();
-        //enemy speed is 70% of the player speed
-        speed = playerREF.GetComponent<PlayerController>().playerSpeed() * 0.7f;
+        //enemy Initial speed is 80% of the player speed
+        speed = playerREF.GetComponent<PlayerController>().playerSpeed() * 0.8f;
     }
 
     // Update is called once per frame

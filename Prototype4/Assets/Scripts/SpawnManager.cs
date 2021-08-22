@@ -13,7 +13,6 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         SpawnEnemyWave(EnemiesToSpawm);
         Instantiate(powerupPrefab, generateSpawnPosition(), powerupPrefab.transform.rotation);
     }
