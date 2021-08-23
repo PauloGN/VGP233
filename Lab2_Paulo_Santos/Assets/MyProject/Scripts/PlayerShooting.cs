@@ -41,7 +41,7 @@ public class PlayerShooting : MonoBehaviour
 
         bool isShooting = false;
         //Regurlar Weeapon behavior
-        if (SaveScript.WeaponID == 1)
+        if (SaveScript.weaponID == 1)
         {
             isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0));
             if (isShooting)
@@ -53,7 +53,7 @@ public class PlayerShooting : MonoBehaviour
             }
         }
         // Machine Gun behavior
-        if (SaveScript.WeaponID == 2)
+        if (SaveScript.weaponID == 2)
         {
             isShooting = (Input.GetMouseButton(1) && Input.GetMouseButton(0));
             if (isShooting)
@@ -89,7 +89,7 @@ public class PlayerShooting : MonoBehaviour
 
         }
         //Grenade 
-        if (SaveScript.WeaponID == 3)
+        if (SaveScript.weaponID == 3)
         {
             isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0));
             if (isShooting)
@@ -108,7 +108,7 @@ public class PlayerShooting : MonoBehaviour
         }
 
         //FireStream Weap
-        if (SaveScript.WeaponID == 4)
+        if (SaveScript.weaponID == 4)
         {
             isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0));
             if (isShooting)
@@ -157,7 +157,7 @@ public class PlayerShooting : MonoBehaviour
             if (hit.transform.CompareTag("Explosive"))
             {
                 hit.transform.gameObject.SendMessage("Explode");
-                Debug.Log("EXPLODE!");
+               // Debug.Log("EXPLODE!");
             }
 
         }
@@ -191,26 +191,30 @@ public class PlayerShooting : MonoBehaviour
     {
         if (other.CompareTag("RifleAmmo"))
         {
-            SaveScript.WeaponID = 1;
+            SaveScript.weaponID = 1;
+            SaveScript.UpdateWeaponPickupInfo(1,30.0f);
             playerSounds.PlayOneShot(pickUpSound);
             Destroy(other.gameObject, 0.2f);
         }
         if (other.CompareTag("RapidFire"))
         {
-            SaveScript.WeaponID = 2;
+            SaveScript.weaponID = 2;
+            SaveScript.UpdateWeaponPickupInfo(2, 30.0f);
             playerSounds.PlayOneShot(pickUpSound);
             Destroy(other.gameObject, 0.2f);
         }
         if (other.CompareTag("GrenadeAmmo"))
         {
-            SaveScript.WeaponID = 3;
+            SaveScript.UpdateWeaponPickupInfo(3, 30.0f);
+            SaveScript.weaponID = 3;
             playerSounds.PlayOneShot(pickUpSound);
             Destroy(other.gameObject, 0.2f);
         }
 
         if (other.CompareTag("FlameAmmo"))
         {
-            SaveScript.WeaponID = 4;
+            SaveScript.UpdateWeaponPickupInfo(4, 30.0f);
+            SaveScript.weaponID = 4;
             playerSounds.PlayOneShot(pickUpSound);
             Destroy(other.gameObject, 0.2f);
         }
