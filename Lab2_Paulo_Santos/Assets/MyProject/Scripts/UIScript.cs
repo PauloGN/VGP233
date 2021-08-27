@@ -9,6 +9,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI weaponType;
     [SerializeField] TextMeshProUGUI ammo;
     [SerializeField] TextMeshProUGUI ammoLabel;
+    [SerializeField] TextMeshProUGUI playerHealth;
 
     //Labels to type of ammunition
     private string ammoWeapon = "AMMO:";
@@ -24,8 +25,8 @@ public class UIScript : MonoBehaviour
     void Update()
     {
         weaponType.text = SaveScript.weaponName;
-        
 
+        playerHealth.text = SaveScript.health.ToString();
         //defines the lable of the ammo
         if(SaveScript.weaponID == 4)
         {

@@ -27,7 +27,7 @@ public class SaveScript : MonoBehaviour
     public static string weaponName;
     public static float ammoAmount;
     public static bool hasWeapon;
-    private static int health = 100;
+    public static int health = 100;
     // Start is called before the first frame update
     void Start()
     {

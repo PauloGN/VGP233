@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] int damage = 5;
+    [SerializeField] int damage = 2;
 
     private void OnTriggerEnter(Collider other)
     {
