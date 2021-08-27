@@ -6,11 +6,12 @@ public class SaveScript : MonoBehaviour
 {
 
     struct WeaponInfo
-    {    //setters for UI
+    { 
+      //setters for UI
       public string weaponName;
       public float ammoAmount;
       public bool hasWeapon;
-
+      
       public WeaponInfo(string name, float amount, bool hasWeap) { weaponName = name; ammoAmount = amount; hasWeapon = hasWeap;}
 
     }
@@ -26,7 +27,7 @@ public class SaveScript : MonoBehaviour
     public static string weaponName;
     public static float ammoAmount;
     public static bool hasWeapon;
-
+    private static int health = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +45,6 @@ public class SaveScript : MonoBehaviour
     void Update()
     {
         UpdateWeaponInfo();
-
         //Test switch Weapons
         if (Input.GetKeyDown(KeyCode.Alpha1) && rifle.hasWeapon)
         {
@@ -68,8 +68,8 @@ public class SaveScript : MonoBehaviour
         }
     }
 
-    //Updating data acording to the weapon equiped
-    private void UpdateWeaponInfo()
+    //Updating data acording to the weapon equiped (UI INFO)
+    public void UpdateWeaponInfo()
     {
         
         if (weaponID == 1)
@@ -137,5 +137,58 @@ public class SaveScript : MonoBehaviour
                 }
                 break;
         }
+
+
     }
+    //Updating Weapon ammo
+    public static void UpdateAmmo(int id, int decrease)
+    {
+        switch (id)
+        {
+            case 1:
+                rifle.ammoAmount -= decrease;
+                if (rifle.ammoAmount <= 0)
+                {
+                    rifle.ammoAmount = 0;
+                    rifle.hasWeapon = false;
+                }
+                break;
+            case 2:
+                machineGun.ammoAmount -= decrease;
+                if (machineGun.ammoAmount <= 0)
+                {
+                    machineGun.ammoAmount = 0;
+                    machineGun.hasWeapon = false;
+                }
+                break;
+            case 3:
+                grenadeLaucher.ammoAmount -= decrease;
+                if (grenadeLaucher.ammoAmount <= 0)
+                {
+                    grenadeLaucher.ammoAmount = 0;
+                    grenadeLaucher.hasWeapon = false;
+                }
+                break;
+            case 4:
+                flameThrower.ammoAmount -= (float)decrease * Time.deltaTime * 2;
+                if (flameThrower.ammoAmount <= 0)
+                {
+                    flameThrower.ammoAmount = 0.0f;
+                    flameThrower.hasWeapon = false;
+                }
+                break;
+
+        }
+    }
+
+   public static void TakeDamage( int dmg)
+    {
+        health -= dmg;
+
+        if(health <= 0)
+        {
+            health = 0;
+        }
+    }
+
 }

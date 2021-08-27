@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         //checks the information inside animator state base
         //Allows to enter the player base animator and check the tags labeled in each state created inside the base animator using its index
         playerInfo = amim.GetCurrentAnimatorStateInfo(0);

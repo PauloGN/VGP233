@@ -23,8 +23,15 @@ public class PlayerShooting : MonoBehaviour
     //Grenades
     [SerializeField] private GameObject grenadeSmoke;
     [SerializeField] private GameObject grenadeExplosion;
-    //Fire
+    //FireWeapon
     [SerializeField] private GameObject flameStream;
+
+    //References
+   
+
+    //standar values
+    private const int ammoDecrease = 1;
+    private bool fireFuel = false;
 
 
     RaycastHit hit;
@@ -33,21 +40,25 @@ public class PlayerShooting : MonoBehaviour
     void Start()
     {
         playerSounds = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+      
+        
         bool isShooting = false;
         //Regurlar Weeapon behavior
         if (SaveScript.weaponID == 1)
         {
-            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0));
+            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0)) && SaveScript.hasWeapon;
             if (isShooting)
             {
                 Instantiate(muzzleFlash, muzzleSpawn.position, muzzleSpawn.rotation);
                 playerSounds.PlayOneShot(singleShoot);
+                //Decrease Rifle ammo
+                SaveScript.UpdateAmmo(1, ammoDecrease);
 
                 Hits();
             }
@@ -55,11 +66,12 @@ public class PlayerShooting : MonoBehaviour
         // Machine Gun behavior
         if (SaveScript.weaponID == 2)
         {
-            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButton(0));
+            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButton(0)) && SaveScript.hasWeapon;
             if (isShooting)
             {
                 Instantiate(muzzleFlash, muzzleSpawn.position, muzzleSpawn.rotation);
 
+                
                 if (rapidPlay)
                 {
                     rapidPlay = false;
@@ -72,6 +84,7 @@ public class PlayerShooting : MonoBehaviour
 
                 if (shooting)
                 {
+                    //decrease ammo inside coroutine
                     shooting = false;
                     StartCoroutine(RapidFire());
                 }
@@ -79,7 +92,8 @@ public class PlayerShooting : MonoBehaviour
        
             }
 
-            if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0))
+            //Conditions to Stop shooting with Machine Gun
+            if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0) || !SaveScript.hasWeapon)
             {
                 rapidPlay = true;
                 playerSounds.loop = false;
@@ -88,15 +102,18 @@ public class PlayerShooting : MonoBehaviour
             }
 
         }
-        //Grenade 
+        //Grenade behavior
         if (SaveScript.weaponID == 3)
         {
-            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0));
+            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && SaveScript.hasWeapon);
             if (isShooting)
             {
                 //grenade effect when shooting
                 Instantiate(grenadeSmoke, muzzleSpawn.position, muzzleSpawn.rotation);
-                
+
+                //Decrease grenade ammo
+                SaveScript.UpdateAmmo(3, ammoDecrease);
+
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 if (Physics.Raycast(ray, out hit, 1000))
@@ -110,13 +127,14 @@ public class PlayerShooting : MonoBehaviour
         //FireStream Weap
         if (SaveScript.weaponID == 4)
         {
-            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0));
+            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && SaveScript.hasWeapon);
             if (isShooting)
             {
                 flameStream.gameObject.SetActive(true);
                 if (rapidPlay)
                 {
                     rapidPlay = false;
+                    fireFuel = true;
                     playerSounds.loop = true;
                     playerSounds.clip = flameSound;
                     playerSounds.Play();
@@ -125,13 +143,21 @@ public class PlayerShooting : MonoBehaviour
             }
 
 
-            if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0) || !SaveScript.hasWeapon)
             {
                 flameStream.gameObject.SetActive(false);
+                fireFuel = false;
                 rapidPlay = true;
                 playerSounds.loop = false;
                 playerSounds.Stop();
             }
+
+
+            if (fireFuel)
+            {
+                SaveScript.UpdateAmmo(4,ammoDecrease);
+            }
+
 
         }
 
@@ -167,6 +193,9 @@ public class PlayerShooting : MonoBehaviour
     private IEnumerator RapidFire()
     {
         yield return new WaitForSeconds(rapidDelay);
+        //Decrease Machine Gun ammo
+        SaveScript.UpdateAmmo(2, ammoDecrease);
+
         Hits();
         shooting = true;
     }
@@ -199,7 +228,7 @@ public class PlayerShooting : MonoBehaviour
         if (other.CompareTag("RapidFire"))
         {
             SaveScript.weaponID = 2;
-            SaveScript.UpdateWeaponPickupInfo(2, 30.0f);
+            SaveScript.UpdateWeaponPickupInfo(2, 500.0f);
             playerSounds.PlayOneShot(pickUpSound);
             Destroy(other.gameObject, 0.2f);
         }

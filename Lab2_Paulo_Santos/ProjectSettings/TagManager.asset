@@ -12,6 +12,7 @@ TagManager:
   - FlameAmmo
   - RifleAmmo
   - Explosive
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Lighting
   - Ground
   - Postprocessing
-  - 
+  - EnemyLight
   - 
   - 
   - 
