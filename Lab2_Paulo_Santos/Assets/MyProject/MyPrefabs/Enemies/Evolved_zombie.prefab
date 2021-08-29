@@ -1775,7 +1775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 0}
   rumSpeed: 2.3
-  attackDistance: 1.5
+  attackDistance: 2
 --- !u!195 &929744246
 NavMeshAgent:
   m_ObjectHideFlags: 0

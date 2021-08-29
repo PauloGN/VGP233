@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
 
     private Animator amim;
     private AnimatorStateInfo playerInfo;
+    private AnimatorStateInfo playerInfoLayer2;
     // Rotation speed while moving
     private float rotateSpeed;
     [SerializeField] private GameObject crossHairRef;
@@ -14,6 +15,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float walkRotationSpeed = 100.0f;
     [SerializeField] private float runningRotationSpeed = 150.0f;
     [SerializeField] private float aimRotationSpeed = 180.0f;
+    [SerializeField] private GameObject bloodFX;
 
 
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class PlayerMove : MonoBehaviour
         amim = GetComponent<Animator>();
         //desable cross hair view
         crossHairRef.SetActive(false);
+        bloodFX.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,9 +35,24 @@ public class PlayerMove : MonoBehaviour
         //checks the information inside animator state base
         //Allows to enter the player base animator and check the tags labeled in each state created inside the base animator using its index
         playerInfo = amim.GetCurrentAnimatorStateInfo(0);
+        playerInfoLayer2 = amim.GetCurrentAnimatorStateInfo(1);
 
         float moveDirection = Input.GetAxis("Vertical");
         float rotateDirection = Input.GetAxis("Mouse X");
+
+        //Layer 2 active and reset
+        if (playerInfoLayer2.IsTag("Hit"))
+        {
+            amim.SetLayerWeight(1, 1);
+            bloodFX.SetActive(true);
+
+
+        }
+        else if (playerInfoLayer2.IsTag("Idle"))
+        {
+            amim.SetLayerWeight(1, 0);
+            bloodFX.SetActive(false);
+        }
 
 
         if (playerInfo.IsTag("Still"))//set the speed rotation if character is stoped
@@ -111,4 +129,14 @@ public class PlayerMove : MonoBehaviour
         }
 
     }
+
+    public void GetHit()
+    {
+
+        //amim.SetLayerWeight(1, 1);
+        amim.SetTrigger("React");
+
+    }
+
+
 }

@@ -16,6 +16,7 @@ public class AIZombie : MonoBehaviour
     private bool canMove;
     private float distanceOffset = 1.2f;
 
+
     // Start is called before the first frame update
     void Start()
     {

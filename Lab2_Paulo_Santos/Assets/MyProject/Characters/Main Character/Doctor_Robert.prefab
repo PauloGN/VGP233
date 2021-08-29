@@ -1390,6 +1390,7 @@ GameObject:
   - component: {fileID: 2083350742}
   - component: {fileID: 1196827711}
   - component: {fileID: 3843133906452132988}
+  - component: {fileID: 592169391}
   m_Layer: 0
   m_Name: Doctor_Robert
   m_TagString: Player
@@ -1614,6 +1615,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &592169391
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879290162731719558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65380704, y: 1.6203806, z: 0.3934581}
+  m_Center: {x: -0.013280139, y: 1.0004642, z: -0.005096331}
 --- !u!1 &3018170298914534773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,7 +2517,6 @@ GameObject:
   m_Component:
   - component: {fileID: 695735965939126766}
   - component: {fileID: 841536327726405920}
-  - component: {fileID: 129948520}
   m_Layer: 0
   m_Name: Ch33_Body
   m_TagString: Player
@@ -2635,19 +2648,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000049322844, y: -0.44967663, z: 0.00065440685}
     m_Extent: {x: 0.8957342, y: 0.87979805, z: 0.21244946}
   m_DirtyAABB: 0
---- !u!65 &129948520
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5294492875506467042}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7914674, y: 1.7965027, z: 0.42900798}
-  m_Center: {x: 0.000026964994, y: 0.89240116, z: 0.032174338}
 --- !u!1 &5412649138324679507
 GameObject:
   m_ObjectHideFlags: 0
