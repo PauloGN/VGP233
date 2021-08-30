@@ -228,13 +228,13 @@ public class PlayerShooting : MonoBehaviour
         if (other.CompareTag("RapidFire"))
         {
             SaveScript.weaponID = 2;
-            SaveScript.UpdateWeaponPickupInfo(2, 500.0f);
+            SaveScript.UpdateWeaponPickupInfo(2, 150.0f);
             playerSounds.PlayOneShot(pickUpSound);
             Destroy(other.gameObject, 0.2f);
         }
         if (other.CompareTag("GrenadeAmmo"))
         {
-            SaveScript.UpdateWeaponPickupInfo(3, 30.0f);
+            SaveScript.UpdateWeaponPickupInfo(3, 3.0f);
             SaveScript.weaponID = 3;
             playerSounds.PlayOneShot(pickUpSound);
             Destroy(other.gameObject, 0.2f);
@@ -242,7 +242,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (other.CompareTag("FlameAmmo"))
         {
-            SaveScript.UpdateWeaponPickupInfo(4, 30.0f);
+            SaveScript.UpdateWeaponPickupInfo(4, 25.0f);
             SaveScript.weaponID = 4;
             playerSounds.PlayOneShot(pickUpSound);
             Destroy(other.gameObject, 0.2f);
