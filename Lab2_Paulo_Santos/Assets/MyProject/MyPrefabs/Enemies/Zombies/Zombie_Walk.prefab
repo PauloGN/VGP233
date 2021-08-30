@@ -1415,8 +1415,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.6700001, z: 0.46174988}
-  m_Center: {x: 2.7997302e-10, y: 1.1600047, z: 0.060485337}
+  m_Size: {x: 0.37, y: 1.53, z: 0.31}
+  m_Center: {x: 2.7997302e-10, y: 0.94, z: 0.060485337}
 --- !u!195 &1950790487
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1453,6 +1453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 0}
   rumSpeed: 0.4
+  walk_CrawlSpeed: 0.5
   attackDistance: 1
   enemyType: 0
 --- !u!208 &1510077422

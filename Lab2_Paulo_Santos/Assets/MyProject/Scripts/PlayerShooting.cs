@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private GameObject stoneImpact;
     [SerializeField] private GameObject metalImpact;
+    [SerializeField] private GameObject bloodImpact;
     //Sounds
     private AudioSource playerSounds;
     [SerializeField]private AudioClip singleShoot;
@@ -184,6 +185,11 @@ public class PlayerShooting : MonoBehaviour
             {
                 hit.transform.gameObject.SendMessage("Explode");
                // Debug.Log("EXPLODE!");
+            }
+
+            if (hit.transform.CompareTag("Enemy"))
+            {
+                Instantiate(bloodImpact, hit.point, Quaternion.LookRotation(hit.normal));
             }
 
         }
