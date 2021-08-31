@@ -11,8 +11,9 @@ public class SaveScript : MonoBehaviour
       public string weaponName;
       public float ammoAmount;
       public bool hasWeapon;
+      public float dmg;
       
-      public WeaponInfo(string name, float amount, bool hasWeap) { weaponName = name; ammoAmount = amount; hasWeapon = hasWeap;}
+      public WeaponInfo(string name, float amount, bool hasWeap, float damage) { weaponName = name; ammoAmount = amount; hasWeapon = hasWeap; dmg = damage;}
 
     }
 
@@ -23,10 +24,12 @@ public class SaveScript : MonoBehaviour
     static WeaponInfo machineGun;
     static WeaponInfo grenadeLaucher;
     static WeaponInfo flameThrower;
+
     //Update info variables
     public static string weaponName;
     public static float ammoAmount;
     public static bool hasWeapon;
+    public static float weapDMG;
     public static int health = 100;
     // Start is called before the first frame update
     void Start()
@@ -34,10 +37,10 @@ public class SaveScript : MonoBehaviour
         Cursor.visible = false;
 
         //initializing Weapons
-        rifle = new WeaponInfo("Rifle",100, true);
-        machineGun = new WeaponInfo("Machine Gun",0, false);
-        grenadeLaucher = new WeaponInfo("Grenade Laucher", 0, false);
-        flameThrower = new WeaponInfo("Flame Thrower", 0, false);
+        rifle = new WeaponInfo("Rifle",100, true, 5.0f);
+        machineGun = new WeaponInfo("Machine Gun",0, false, 3.0f);
+        grenadeLaucher = new WeaponInfo("Grenade Laucher", 0, false,35.0f);
+        flameThrower = new WeaponInfo("Flame Thrower", 0, false,35.0f);
 
     }
 
@@ -77,6 +80,7 @@ public class SaveScript : MonoBehaviour
             weaponName = rifle.weaponName;
             ammoAmount = rifle.ammoAmount;
             hasWeapon = rifle.hasWeapon;
+            weapDMG = rifle.dmg;
 
         }    
         else if (weaponID == 2)
@@ -84,6 +88,7 @@ public class SaveScript : MonoBehaviour
             weaponName = machineGun.weaponName;
             ammoAmount = machineGun.ammoAmount;
             hasWeapon = machineGun.hasWeapon;
+            weapDMG = machineGun.dmg;
 
         }
         else if (weaponID == 3)
@@ -91,6 +96,7 @@ public class SaveScript : MonoBehaviour
             weaponName = grenadeLaucher.weaponName;
             ammoAmount = grenadeLaucher.ammoAmount;
             hasWeapon = grenadeLaucher.hasWeapon;
+            weapDMG = grenadeLaucher.dmg;
 
         }
         else if (weaponID == 4)
@@ -98,6 +104,7 @@ public class SaveScript : MonoBehaviour
             weaponName = flameThrower.weaponName;
             ammoAmount = flameThrower.ammoAmount;
             hasWeapon = flameThrower.hasWeapon;
+            weapDMG = flameThrower.dmg;
 
         }
 

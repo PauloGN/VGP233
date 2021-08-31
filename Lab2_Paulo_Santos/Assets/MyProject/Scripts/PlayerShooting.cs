@@ -190,6 +190,7 @@ public class PlayerShooting : MonoBehaviour
             if (hit.transform.CompareTag("Enemy"))
             {
                 Instantiate(bloodImpact, hit.point, Quaternion.LookRotation(hit.normal));
+                hit.transform.gameObject.SendMessage("TakeDamage");
             }
 
         }

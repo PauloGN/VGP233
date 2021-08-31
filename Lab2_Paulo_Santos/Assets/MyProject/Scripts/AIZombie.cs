@@ -18,8 +18,12 @@ public class AIZombie : MonoBehaviour
     private float distanceToPlayer;
     private bool canMove;
     private float distanceOffset = 0.7f;
-
-    [SerializeField]EnemyType enemyType;
+   
+    [SerializeField] private EnemyType enemyType;
+    [SerializeField] private float health;
+    
+    //Death conditions
+    public bool isDead;
   
 
     // Start is called before the first frame update
@@ -33,39 +37,41 @@ public class AIZombie : MonoBehaviour
         zombieCollider = GetComponent<BoxCollider>();
         EnemyMovementType();
 
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Geting the player distance;
-        distanceToPlayer = Vector3.Distance(playerTarget.transform.position, transform.position);
 
-        if(distanceToPlayer < attackDistance)
+        if (!isDead)
         {
-            animatorRef.SetBool("Attack",true);
-            zombieCollider.enabled = true;
-            canMove = false;
-            myNav.enabled = false;
-            myNavObstacle.enabled = true;
+            //Geting the player distance;
+            distanceToPlayer = Vector3.Distance(playerTarget.transform.position, transform.position);
+
+            if (distanceToPlayer < attackDistance)
+            {
+                animatorRef.SetBool("Attack", true);
+                zombieCollider.enabled = true;
+                canMove = false;
+                myNav.enabled = false;
+                myNavObstacle.enabled = true;
+
+            }
+            else if (distanceToPlayer > attackDistance + distanceOffset)
+            {
+                animatorRef.SetBool("Attack", false);
+                zombieCollider.enabled = true;
+                canMove = true;
+                myNavObstacle.enabled = false;
+                myNav.enabled = true;
+            }
+
+            if (canMove)
+            {
+                myNav.SetDestination(playerTarget.transform.position);
+            }
 
         }
-        else if(distanceToPlayer > attackDistance + distanceOffset)
-        {
-            animatorRef.SetBool("Attack", false);
-            zombieCollider.enabled = true;
-            canMove = true;
-            myNavObstacle.enabled = false;
-            myNav.enabled = true;
-        }
-
-        if (canMove)
-        {
-              myNav.SetDestination(playerTarget.transform.position);
-        }
-
-
     }
 
 
@@ -82,6 +88,23 @@ public class AIZombie : MonoBehaviour
             animatorRef.SetLayerWeight(1, 1);
             myNav.speed = walk_CrawlSpeed;
         }
+
+    }
+
+
+    public void TakeDamage()
+    {
+
+        health -= SaveScript.weapDMG;
+
+        if(health <= 0)
+        {
+            isDead = true;
+            animatorRef.SetTrigger("Death");
+            canMove = false;
+            myNav.enabled = false;
+        }
+        
 
     }
 

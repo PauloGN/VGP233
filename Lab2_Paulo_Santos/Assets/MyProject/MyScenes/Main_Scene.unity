@@ -27447,6 +27447,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Evolved_Injured
       objectReference: {fileID: 0}
+    - target: {fileID: 6906482039675660123, guid: f4e7f45878f956443a00b4ac946096c7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4e7f45878f956443a00b4ac946096c7, type: 3}
 --- !u!1001 &1015757585
@@ -32263,6 +32268,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: skeleton_Run
       objectReference: {fileID: 0}
+    - target: {fileID: 6219044622152690103, guid: db510777ab6c0de48878d93a467b05a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6702953349836616461, guid: db510777ab6c0de48878d93a467b05a0,
         type: 3}
       propertyPath: m_RootOrder
@@ -33379,6 +33389,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 786219918, guid: 7cff84ad86d2dd34791f84d02ee4157b, type: 3}
+      propertyPath: health
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6219044622152690103, guid: 7cff84ad86d2dd34791f84d02ee4157b,
         type: 3}
       propertyPath: m_Name
@@ -35396,6 +35410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Evolved_Run
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906482039675660123, guid: 85651811c7006c041a079be4deab604e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85651811c7006c041a079be4deab604e, type: 3}
@@ -42283,6 +42302,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie_Crawlling
       objectReference: {fileID: 0}
+    - target: {fileID: 1156519896732834784, guid: 697dd0383e43efb498df38178ac735a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1965566268473786714, guid: 697dd0383e43efb498df38178ac735a7,
         type: 3}
       propertyPath: m_RootOrder
@@ -42337,6 +42361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875558719811059631, guid: 697dd0383e43efb498df38178ac735a7,
+        type: 3}
+      propertyPath: health
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 697dd0383e43efb498df38178ac735a7, type: 3}
@@ -42991,10 +43020,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1950790488, guid: d3864bc2ee86568488be4ab52a4940f2, type: 3}
+      propertyPath: health
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4721713258218739479, guid: d3864bc2ee86568488be4ab52a4940f2,
         type: 3}
       propertyPath: m_Name
       value: Zombie_Walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721713258218739479, guid: d3864bc2ee86568488be4ab52a4940f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5390023279971995053, guid: d3864bc2ee86568488be4ab52a4940f2,
         type: 3}
