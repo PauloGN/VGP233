@@ -31,6 +31,7 @@ public class SaveScript : MonoBehaviour
     public static bool hasWeapon;
     public static float weapDMG;
     public static int health = 100;
+    public static int score = 0;
     // Start is called before the first frame update
     void Start()
     {

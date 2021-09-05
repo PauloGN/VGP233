@@ -11,6 +11,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] private float walk_CrawlSpeed = 0.5f;
     [SerializeField] private float attackDistance = 1.5f;
     [SerializeField] private float delayToDestroy = 2.1f;
+    [SerializeField] private int points2KillThis = 100;
 
     private BoxCollider zombieCollider;
     private NavMeshAgent myNav;
@@ -100,6 +101,7 @@ public class AIZombie : MonoBehaviour
 
         if(health <= 0)
         {
+            SaveScript.score += points2KillThis;
             isDead = true;
             animatorRef.SetTrigger("Death");
             canMove = false;

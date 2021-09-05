@@ -7,8 +7,10 @@ public class EnemySound : MonoBehaviour
     private AudioSource enemyAudio;
     private int soundIDX = 0;
     private bool randomizer = true;
+    private bool lastSound = true;
     private AIZombie aiZombieScript;
     [SerializeField] private AudioClip [] mysounds;
+    [SerializeField] private AudioClip [] deathSounds;
 
 
     // Start is called before the first frame update
@@ -25,7 +27,7 @@ public class EnemySound : MonoBehaviour
         {
             if (randomizer)
             {
-                soundIDX = Random.Range(1, mysounds.Length);
+                soundIDX = Random.Range(0, mysounds.Length);
                 randomizer = false;
 
                 enemyAudio.PlayOneShot(mysounds[soundIDX]);
@@ -35,7 +37,17 @@ public class EnemySound : MonoBehaviour
 
         if (aiZombieScript.isDead)
         {
-            enemyAudio.Stop();
+
+            if (lastSound)
+            {
+                enemyAudio.Stop();
+                enemyAudio.volume = 1.0f;
+                soundIDX = Random.Range(0, deathSounds.Length);
+                enemyAudio.clip = deathSounds[soundIDX];
+                enemyAudio.Play();
+                lastSound = false;
+            }
+
         }
 
     }
@@ -46,5 +58,11 @@ public class EnemySound : MonoBehaviour
 
         yield return new WaitForSeconds(mysounds[soundIDX].length);
         randomizer = true;
+
     }
+
+
+    
+
+
 }
