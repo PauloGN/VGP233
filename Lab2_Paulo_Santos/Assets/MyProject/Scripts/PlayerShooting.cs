@@ -28,7 +28,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject flameStream;
 
     //References
-   
+    [SerializeField] private LayerMask playerLayerMask;
 
     //standar values
     private const int ammoDecrease = 1;
@@ -117,7 +117,7 @@ public class PlayerShooting : MonoBehaviour
 
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out hit, 1000))
+                if (Physics.Raycast(ray, out hit, 1000, ~playerLayerMask))
                 {
                     StartCoroutine(Grenade());
                 }
@@ -169,7 +169,7 @@ public class PlayerShooting : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if(Physics.Raycast(ray,out hit, 1000))
+        if(Physics.Raycast(ray, out hit, 1000, ~playerLayerMask))
         {
             if (hit.transform.CompareTag("Stone"))
             {

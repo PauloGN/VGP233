@@ -10,6 +10,7 @@ public class AIZombie : MonoBehaviour
     [SerializeField] private float rumSpeed = 2.3f;
     [SerializeField] private float walk_CrawlSpeed = 0.5f;
     [SerializeField] private float attackDistance = 1.5f;
+    [SerializeField] private float delayToDestroy = 2.1f;
 
     private BoxCollider zombieCollider;
     private NavMeshAgent myNav;
@@ -103,10 +104,16 @@ public class AIZombie : MonoBehaviour
             animatorRef.SetTrigger("Death");
             canMove = false;
             myNav.enabled = false;
-        }
-        
+            zombieCollider.enabled = false;
+            StartCoroutine(TimeToDestroyOBJ());
+        }  
 
     }
 
+    private IEnumerator TimeToDestroyOBJ()
+    {
+        yield return new WaitForSeconds(delayToDestroy);
+        Destroy(gameObject);
+    }
 
 }

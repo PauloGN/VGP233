@@ -32,8 +32,15 @@ public class EnemySound : MonoBehaviour
                 StartCoroutine(WaitNewSound());
             }
         }
+
+        if (aiZombieScript.isDead)
+        {
+            enemyAudio.Stop();
+        }
+
     }
 
+    //Time to change the sounds 
     IEnumerator WaitNewSound()
     {
 

@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float runningRotationSpeed = 150.0f;
     [SerializeField] private float aimRotationSpeed = 180.0f;
     [SerializeField] private GameObject bloodFX;
+   
 
 
     // Start is called before the first frame update
