@@ -13,6 +13,7 @@ TagManager:
   - RifleAmmo
   - Explosive
   - Enemy
+  - EnemyCap
   layers:
   - Default
   - TransparentFX
@@ -27,8 +28,8 @@ TagManager:
   - Postprocessing
   - EnemyLight
   - PlayerLayer
-  - 
-  - 
+  - MParticleDetect
+  - Flames
   - 
   - 
   - 

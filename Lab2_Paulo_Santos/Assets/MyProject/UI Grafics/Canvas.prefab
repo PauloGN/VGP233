@@ -753,6 +753,8 @@ MonoBehaviour:
   weaponType: {fileID: 2359487005585777522}
   ammo: {fileID: 2359487005694364809}
   ammoLabel: {fileID: 2359487004909034275}
+  playerHealth: {fileID: 2359487005466765691}
+  myScore: {fileID: 2359487004719360320}
 --- !u!1 &2359487005439495344
 GameObject:
   m_ObjectHideFlags: 0

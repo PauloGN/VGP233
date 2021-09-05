@@ -29,6 +29,7 @@ public class PlayerShooting : MonoBehaviour
 
     //References
     [SerializeField] private LayerMask playerLayerMask;
+    private AIZombie aiZombieScript;//**************************
 
     //standar values
     private const int ammoDecrease = 1;
@@ -41,14 +42,12 @@ public class PlayerShooting : MonoBehaviour
     void Start()
     {
         playerSounds = GetComponent<AudioSource>();
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-        
+
         bool isShooting = false;
         //Regurlar Weeapon behavior
         if (SaveScript.weaponID == 1)
@@ -191,6 +190,16 @@ public class PlayerShooting : MonoBehaviour
             {
                 Instantiate(bloodImpact, hit.point, Quaternion.LookRotation(hit.normal));
                 hit.transform.gameObject.SendMessage("TakeDamage");
+
+            }else if (hit.transform.CompareTag("EnemyCap"))
+            {
+                aiZombieScript = hit.transform.gameObject.GetComponentInParent<AIZombie>();
+
+                if (!aiZombieScript.isDead)
+                {
+                    Instantiate(bloodImpact, hit.point, Quaternion.LookRotation(hit.normal));
+                    aiZombieScript.TakeDamage();
+                }
             }
 
         }
