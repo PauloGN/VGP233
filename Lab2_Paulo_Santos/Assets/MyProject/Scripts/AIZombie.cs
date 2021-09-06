@@ -20,7 +20,8 @@ public class AIZombie : MonoBehaviour
     private float distanceToPlayer;
     private bool canMove;
     private float distanceOffset = 0.7f;
-   
+    private float BarrelDMG = 50f;
+
     [SerializeField] private EnemyType enemyType;
     [SerializeField] private float health;
     
@@ -111,6 +112,26 @@ public class AIZombie : MonoBehaviour
         }  
 
     }
+
+
+    public void TakeDamageFromBarrel()
+    {
+
+        health -= BarrelDMG;
+
+        if (health <= 0)
+        {
+            SaveScript.score += points2KillThis;
+            isDead = true;
+            animatorRef.SetTrigger("Death");
+            canMove = false;
+            myNav.enabled = false;
+            zombieCollider.enabled = false;
+            StartCoroutine(TimeToDestroyOBJ());
+        }
+
+    }
+
 
     private IEnumerator TimeToDestroyOBJ()
     {

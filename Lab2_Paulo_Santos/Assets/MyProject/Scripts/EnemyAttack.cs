@@ -21,7 +21,7 @@ public class EnemyAttack : MonoBehaviour
             SaveScript.TakeDamage(damage);
             other.transform.gameObject.SendMessage("GetHit");
             enemyAudio.PlayOneShot(attacking);
-            //Debug.Log("Attacking..");
+            //Debug.Log("Enemy Attacking..");
         }
     }
 

@@ -1524,7 +1524,7 @@ MonoBehaviour:
   flameStream: {fileID: 1973077294842516}
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 12288
 --- !u!82 &3843133906452132988
 AudioSource:
   m_ObjectHideFlags: 0
