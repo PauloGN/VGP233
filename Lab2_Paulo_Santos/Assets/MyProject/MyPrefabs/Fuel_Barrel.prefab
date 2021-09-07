@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 497063603189806859}
   - component: {fileID: 455151421804991947}
   - component: {fileID: 483016651088102527}
+  - component: {fileID: 6211529342297618320}
   m_Layer: 0
   m_Name: Fuel_Barrel
   m_TagString: Explosive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!4 &484831022801222187
 Transform:
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 482691557747735457}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 39.432, y: 0.427, z: -23.607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -110,3 +111,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1121192042590650, guid: 185976dbb9e5d2f41b8fab0320f683b7, type: 3}
+--- !u!208 &6211529342297618320
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482691557747735457}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.24, y: 0.43, z: 0.246}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

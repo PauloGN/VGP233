@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlameAttack : MonoBehaviour
 {
 
-    //My burnout FX
+    //My burnOut FX
     [SerializeField] GameObject burnOutFX;
     private AIZombie aIZombieScript;
     private float delayTime = 0.0f;

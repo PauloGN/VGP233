@@ -263,6 +263,15 @@ public class PlayerShooting : MonoBehaviour
             playerSounds.PlayOneShot(pickUpSound);
             Destroy(other.gameObject, 0.2f);
         }
+
+        if (other.CompareTag("HealthPickup"))
+        {
+
+            SaveScript.HealthPickup();
+            playerSounds.PlayOneShot(pickUpSound);
+            Destroy(other.gameObject);
+        }
+
     }
 
  

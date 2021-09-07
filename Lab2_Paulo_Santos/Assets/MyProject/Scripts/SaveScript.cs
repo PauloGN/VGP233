@@ -30,8 +30,16 @@ public class SaveScript : MonoBehaviour
     public static float ammoAmount;
     public static bool hasWeapon;
     public static float weapDMG;
-    public static int health = 100;
+    public static int health;
     public static int score = 0;
+
+    //Controls Variables
+
+    public static int enemiesCounter = 0;
+    public const int healthRestore = 20;
+    public const int maxHealth = 100;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +50,7 @@ public class SaveScript : MonoBehaviour
         machineGun = new WeaponInfo("Machine Gun",0, false, 3.0f);
         grenadeLaucher = new WeaponInfo("Grenade Laucher", 0, false,35.0f);
         flameThrower = new WeaponInfo("Flame Thrower", 0, false,35.0f);
-
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -188,6 +196,19 @@ public class SaveScript : MonoBehaviour
 
         }
     }
+
+   public static void HealthPickup( )
+    {
+
+        health += healthRestore;
+
+        if(health > maxHealth)
+        {
+           health = maxHealth;
+        }
+
+    }
+
 
    public static void TakeDamage( int dmg)
     {

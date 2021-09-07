@@ -19,12 +19,13 @@ public class AIZombie : MonoBehaviour
     private Animator animatorRef;
     private float distanceToPlayer;
     private bool canMove;
-    private float distanceOffset = 0.7f;
+    private float distanceOffset = 1.1f;
     private float BarrelDMG = 50f;
 
     [SerializeField] private EnemyType enemyType;
     [SerializeField] private float health;
-    
+    [SerializeField] private float rotationSpeed = 2.0f;
+
     //Death conditions
     public bool isDead;
   
@@ -56,8 +57,15 @@ public class AIZombie : MonoBehaviour
                 animatorRef.SetBool("Attack", true);
                 zombieCollider.enabled = true;
                 canMove = false;
-                myNav.enabled = false;
-                myNavObstacle.enabled = true;
+                
+                // myNav.enabled = false;
+                // myNavObstacle.enabled = true;
+                myNav.isStopped = true;
+
+                //fix Enemy rotation to face to the player
+                Vector3 pos = (playerTarget.transform.position - transform.position).normalized;
+                Quaternion posRotation = Quaternion.LookRotation(new Vector3(pos.x,0,pos.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, posRotation, Time.deltaTime * rotationSpeed);
 
             }
             else if (distanceToPlayer > attackDistance + distanceOffset)
@@ -65,8 +73,11 @@ public class AIZombie : MonoBehaviour
                 animatorRef.SetBool("Attack", false);
                 zombieCollider.enabled = true;
                 canMove = true;
-                myNavObstacle.enabled = false;
-                myNav.enabled = true;
+               
+                //myNavObstacle.enabled = false;
+                // myNav.enabled = true;
+                myNav.isStopped = false;
+
             }
 
             if (canMove)
@@ -102,13 +113,21 @@ public class AIZombie : MonoBehaviour
 
         if(health <= 0)
         {
+            // Gain points to kill enemies
             SaveScript.score += points2KillThis;
             isDead = true;
+            //Calls the death animation
             animatorRef.SetTrigger("Death");
+
             canMove = false;
             myNav.enabled = false;
             zombieCollider.enabled = false;
-            StartCoroutine(TimeToDestroyOBJ());
+
+            //Enemy counter decrease
+            SaveScript.enemiesCounter--;
+
+            StartCoroutine(TimeToDestroyOBJ());      
+
         }  
 
     }
@@ -127,7 +146,12 @@ public class AIZombie : MonoBehaviour
             canMove = false;
             myNav.enabled = false;
             zombieCollider.enabled = false;
-            StartCoroutine(TimeToDestroyOBJ());
+
+            //Enemy counter decrease
+            SaveScript.enemiesCounter--;
+
+            StartCoroutine(TimeToDestroyOBJ());           
+
         }
 
     }

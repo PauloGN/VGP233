@@ -167,7 +167,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1.22
-  m_Range: 28.77
+  m_Range: 14.53
   m_SpotAngle: 112
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -1391,6 +1391,7 @@ GameObject:
   - component: {fileID: 1196827711}
   - component: {fileID: 3843133906452132988}
   - component: {fileID: 592169391}
+  - component: {fileID: 1067470677}
   m_Layer: 12
   m_Name: Doctor_Robert
   m_TagString: Player
@@ -1634,6 +1635,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.65380704, y: 1.6203806, z: 0.3934581}
   m_Center: {x: -0.013280139, y: 1.0004642, z: -0.005096331}
+--- !u!208 &1067470677
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879290162731719558}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.375, y: 0.76, z: 0.26}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.03, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3018170298914534773
 GameObject:
   m_ObjectHideFlags: 0
