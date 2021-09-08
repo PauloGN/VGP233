@@ -15,6 +15,10 @@ public class UIScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerHealth;
     [SerializeField] TextMeshProUGUI myScore;
 
+    //Death Panel
+    [SerializeField] private GameObject deathPanel;
+
+
     //Labels to type of ammunition
     private string ammoWeapon = "AMMO:";
     private string fuelWeapon = "FUEL:";
@@ -22,7 +26,7 @@ public class UIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        deathPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,6 +50,15 @@ public class UIScript : MonoBehaviour
         }
 
 
+        if (SaveScript.isPlayerDead)
+        {
+            deathPanel.SetActive(true);
+        }
+
 
     }
+
+
+
+
 }

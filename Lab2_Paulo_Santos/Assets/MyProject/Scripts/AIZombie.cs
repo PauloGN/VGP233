@@ -46,46 +46,50 @@ public class AIZombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!isDead)
+        if (!SaveScript.isPlayerDead)
         {
-            //Geting the player distance;
-            distanceToPlayer = Vector3.Distance(playerTarget.transform.position, transform.position);
 
-            if (distanceToPlayer < attackDistance)
+            if (!isDead)
             {
-                animatorRef.SetBool("Attack", true);
-                zombieCollider.enabled = true;
-                canMove = false;
-                
-                // myNav.enabled = false;
-                // myNavObstacle.enabled = true;
-                myNav.isStopped = true;
+                //Geting the player distance;
+                distanceToPlayer = Vector3.Distance(playerTarget.transform.position, transform.position);
 
-                //fix Enemy rotation to face to the player
-                Vector3 pos = (playerTarget.transform.position - transform.position).normalized;
-                Quaternion posRotation = Quaternion.LookRotation(new Vector3(pos.x,0,pos.z));
-                transform.rotation = Quaternion.Slerp(transform.rotation, posRotation, Time.deltaTime * rotationSpeed);
+                if (distanceToPlayer < attackDistance)
+                {
+                    animatorRef.SetBool("Attack", true);
+                    zombieCollider.enabled = true;
+                    canMove = false;
+
+                    // myNav.enabled = false;
+                    // myNavObstacle.enabled = true;
+                    myNav.isStopped = true;
+
+                    //fix Enemy rotation to face to the player
+                    Vector3 pos = (playerTarget.transform.position - transform.position).normalized;
+                    Quaternion posRotation = Quaternion.LookRotation(new Vector3(pos.x, 0, pos.z));
+                    transform.rotation = Quaternion.Slerp(transform.rotation, posRotation, Time.deltaTime * rotationSpeed);
+
+                }
+                else if (distanceToPlayer > attackDistance + distanceOffset)
+                {
+                    animatorRef.SetBool("Attack", false);
+                    zombieCollider.enabled = true;
+                    canMove = true;
+
+                    //myNavObstacle.enabled = false;
+                    // myNav.enabled = true;
+                    myNav.isStopped = false;
+
+                }
+
+                if (canMove)
+                {
+                    myNav.SetDestination(playerTarget.transform.position);
+                }
 
             }
-            else if (distanceToPlayer > attackDistance + distanceOffset)
-            {
-                animatorRef.SetBool("Attack", false);
-                zombieCollider.enabled = true;
-                canMove = true;
-               
-                //myNavObstacle.enabled = false;
-                // myNav.enabled = true;
-                myNav.isStopped = false;
 
-            }
-
-            if (canMove)
-            {
-                myNav.SetDestination(playerTarget.transform.position);
-            }
-
-        }
+        }    
     }
 
 
@@ -124,7 +128,7 @@ public class AIZombie : MonoBehaviour
             zombieCollider.enabled = false;
 
             //Enemy counter decrease
-            SaveScript.enemiesCounter--;
+            //SaveScript.enemiesCounter--;
 
             StartCoroutine(TimeToDestroyOBJ());      
 
@@ -148,7 +152,7 @@ public class AIZombie : MonoBehaviour
             zombieCollider.enabled = false;
 
             //Enemy counter decrease
-            SaveScript.enemiesCounter--;
+            //SaveScript.enemiesCounter--;
 
             StartCoroutine(TimeToDestroyOBJ());           
 

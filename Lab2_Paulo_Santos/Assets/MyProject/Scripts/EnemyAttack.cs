@@ -16,13 +16,15 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (!SaveScript.isPlayerDead)
         {
-            SaveScript.TakeDamage(damage);
-            other.transform.gameObject.SendMessage("GetHit");
-            enemyAudio.PlayOneShot(attacking);
-            //Debug.Log("Enemy Attacking..");
+            if (other.gameObject.CompareTag("Player"))
+            {
+                SaveScript.TakeDamage(damage);
+                other.transform.gameObject.SendMessage("GetHit");
+                enemyAudio.PlayOneShot(attacking);
+                //Debug.Log("Enemy Attacking..");
+            }
         }
     }
-
 }

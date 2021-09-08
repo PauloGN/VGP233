@@ -15,16 +15,17 @@ public class EnemySpawn : MonoBehaviour
     private int spawnPointResistance = 30;
     private int barrelDmg = 10;
     private int flameDmg = 5;
+    private int scorepoints = 10000;
 
     //Delay Control
     private float spawnDelay = 0.3f;
-    private float spawnDelayMin = 3.2f;
-    private float spawnDelayMax = 7.5f;
+    private float spawnDelayMin = 0.5f;
+    private float spawnDelayMax = 10.0f;
     private float damageDelayTime = 0.0f;
     private const float resetDmgDelay = 0.5f;
 
     //Wave Control
-    private int enemiesWave = 40;
+    [SerializeField]private int enemiesWave = 40;
     private int spawnedPerCycle = 2;
     
 
@@ -79,13 +80,13 @@ public class EnemySpawn : MonoBehaviour
             //Checks if the damage is causede by a barrel explosion or Flame thrower
             if (other.CompareTag("B_Explosion"))
             {
-                Debug.Log("O barril explodiu...");
+                //Debug.Log("O barril explodiu...");
                 spawnPointResistance -= barrelDmg;
             }
             else
             {
                
-               Debug.Log("Is burning......");
+              // Debug.Log("Is burning......");
                spawnPointResistance -= flameDmg;
 
             }
@@ -94,12 +95,15 @@ public class EnemySpawn : MonoBehaviour
             damageDelayTime = resetDmgDelay;
         }
 
+
+        //Destroy Spawn point and reset counter for new waves
         if(spawnPointResistance <= 15)
         {
             sparks.SetActive(true);
             if (spawnPointResistance <= 0)
             {
-
+                SaveScript.enemiesCounter = 0;
+                SaveScript.score += scorepoints;
                 Instantiate(explosion, spawnPlace.position, spawnPlace.rotation);
                 Destroy(gameObject);
 

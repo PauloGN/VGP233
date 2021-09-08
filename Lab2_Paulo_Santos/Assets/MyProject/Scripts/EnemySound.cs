@@ -23,33 +23,36 @@ public class EnemySound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!aiZombieScript.isDead)
+        if (!SaveScript.isPlayerDead)
         {
-            if (randomizer)
+            if (!aiZombieScript.isDead)
             {
-                soundIDX = Random.Range(0, mysounds.Length);
-                randomizer = false;
+                if (randomizer)
+                {
+                    soundIDX = Random.Range(0, mysounds.Length);
+                    randomizer = false;
 
-                enemyAudio.PlayOneShot(mysounds[soundIDX]);
-                StartCoroutine(WaitNewSound());
-            }
-        }
-
-        if (aiZombieScript.isDead)
-        {
-
-            if (lastSound)
-            {
-                enemyAudio.Stop();
-                enemyAudio.volume = 1.0f;
-                soundIDX = Random.Range(0, deathSounds.Length);
-                enemyAudio.clip = deathSounds[soundIDX];
-                enemyAudio.Play();
-                lastSound = false;
+                    enemyAudio.PlayOneShot(mysounds[soundIDX]);
+                    StartCoroutine(WaitNewSound());
+                }
             }
 
-        }
+            if (aiZombieScript.isDead)
+            {
 
+                if (lastSound)
+                {
+                    enemyAudio.Stop();
+                    enemyAudio.volume = 1.0f;
+                    soundIDX = Random.Range(0, deathSounds.Length);
+                    enemyAudio.clip = deathSounds[soundIDX];
+                    enemyAudio.Play();
+                    lastSound = false;
+                }
+
+            }
+
+        }      
     }
 
     //Time to change the sounds 

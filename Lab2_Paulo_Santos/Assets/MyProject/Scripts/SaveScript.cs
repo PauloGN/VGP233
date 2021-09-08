@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveScript : MonoBehaviour
 {
@@ -30,8 +31,10 @@ public class SaveScript : MonoBehaviour
     public static float ammoAmount;
     public static bool hasWeapon;
     public static float weapDMG;
+    //Player Health and Player Score
     public static int health;
     public static int score = 0;
+    public static bool isPlayerDead = false;
 
     //Controls Variables
 
@@ -39,23 +42,28 @@ public class SaveScript : MonoBehaviour
     public const int healthRestore = 20;
     public const int maxHealth = 100;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
-
+        
         //initializing Weapons
         rifle = new WeaponInfo("Rifle",100, true, 5.0f);
         machineGun = new WeaponInfo("Machine Gun",0, false, 3.0f);
         grenadeLaucher = new WeaponInfo("Grenade Laucher", 0, false,35.0f);
         flameThrower = new WeaponInfo("Flame Thrower", 0, false,35.0f);
-        health = maxHealth;
+
+        ResetValues();   
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            health = 0;
+        }
+
         UpdateWeaponInfo();
         //Test switch Weapons
         if (Input.GetKeyDown(KeyCode.Alpha1) && rifle.hasWeapon)
@@ -195,8 +203,10 @@ public class SaveScript : MonoBehaviour
                 break;
 
         }
+
     }
 
+   
    public static void HealthPickup( )
     {
 
@@ -209,15 +219,31 @@ public class SaveScript : MonoBehaviour
 
     }
 
-
    public static void TakeDamage( int dmg)
     {
         health -= dmg;
 
         if(health <= 0)
         {
+            isPlayerDead = true;
             health = 0;
+            Cursor.visible = true;
         }
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void ResetValues()
+    {
+        Cursor.visible = false;
+        isPlayerDead = false;
+        score = 0;
+        health = maxHealth;
+        enemiesCounter = 0;
+        weaponID = 1;//rifle
     }
 
 }

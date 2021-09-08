@@ -48,119 +48,123 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
 
-        bool isShooting = false;
-        //Regurlar Weeapon behavior
-        if (SaveScript.weaponID == 1)
+        if (!SaveScript.isPlayerDead)
         {
-            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0)) && SaveScript.hasWeapon;
-            if (isShooting)
+            bool isShooting = false;
+            //Regurlar Weeapon behavior
+            if (SaveScript.weaponID == 1)
             {
-                Instantiate(muzzleFlash, muzzleSpawn.position, muzzleSpawn.rotation);
-                playerSounds.PlayOneShot(singleShoot);
-                //Decrease Rifle ammo
-                SaveScript.UpdateAmmo(1, ammoDecrease);
-
-                Hits();
-            }
-        }
-        // Machine Gun behavior
-        if (SaveScript.weaponID == 2)
-        {
-            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButton(0)) && SaveScript.hasWeapon;
-            if (isShooting)
-            {
-                Instantiate(muzzleFlash, muzzleSpawn.position, muzzleSpawn.rotation);
-
-                
-                if (rapidPlay)
+                isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0)) && SaveScript.hasWeapon;
+                if (isShooting)
                 {
-                    rapidPlay = false;
-                    playerSounds.loop = true;
-                    playerSounds.clip = rapidShoot;
-                    playerSounds.pitch = 3;
-                    playerSounds.Play();
-                    
+                    Instantiate(muzzleFlash, muzzleSpawn.position, muzzleSpawn.rotation);
+                    playerSounds.PlayOneShot(singleShoot);
+                    //Decrease Rifle ammo
+                    SaveScript.UpdateAmmo(1, ammoDecrease);
+
+                    Hits();
+                }
+            }
+            // Machine Gun behavior
+            if (SaveScript.weaponID == 2)
+            {
+                isShooting = (Input.GetMouseButton(1) && Input.GetMouseButton(0)) && SaveScript.hasWeapon;
+                if (isShooting)
+                {
+                    Instantiate(muzzleFlash, muzzleSpawn.position, muzzleSpawn.rotation);
+
+
+                    if (rapidPlay)
+                    {
+                        rapidPlay = false;
+                        playerSounds.loop = true;
+                        playerSounds.clip = rapidShoot;
+                        playerSounds.pitch = 3;
+                        playerSounds.Play();
+
+                    }
+
+                    if (shooting)
+                    {
+                        //decrease ammo inside coroutine
+                        shooting = false;
+                        StartCoroutine(RapidFire());
+                    }
+
+
                 }
 
-                if (shooting)
+                //Conditions to Stop shooting with Machine Gun
+                if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0) || !SaveScript.hasWeapon)
                 {
-                    //decrease ammo inside coroutine
-                    shooting = false;
-                    StartCoroutine(RapidFire());
-                }
-
-       
-            }
-
-            //Conditions to Stop shooting with Machine Gun
-            if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0) || !SaveScript.hasWeapon)
-            {
-                rapidPlay = true;
-                playerSounds.loop = false;
-                playerSounds.pitch = 1;
-                playerSounds.Stop();
-            }
-
-        }
-        //Grenade behavior
-        if (SaveScript.weaponID == 3)
-        {
-            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && SaveScript.hasWeapon);
-            if (isShooting)
-            {
-                //grenade effect when shooting
-                Instantiate(grenadeSmoke, muzzleSpawn.position, muzzleSpawn.rotation);
-
-                //Decrease grenade ammo
-                SaveScript.UpdateAmmo(3, ammoDecrease);
-
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                if (Physics.Raycast(ray, out hit, 1000, ~playerLayerMask))
-                {
-                    StartCoroutine(Grenade());
+                    rapidPlay = true;
+                    playerSounds.loop = false;
+                    playerSounds.pitch = 1;
+                    playerSounds.Stop();
                 }
 
             }
-        }
-
-        //FireStream Weap
-        if (SaveScript.weaponID == 4)
-        {
-            isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && SaveScript.hasWeapon);
-            if (isShooting)
+            //Grenade behavior
+            if (SaveScript.weaponID == 3)
             {
-                flameStream.gameObject.SetActive(true);
-                if (rapidPlay)
+                isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && SaveScript.hasWeapon);
+                if (isShooting)
                 {
-                    rapidPlay = false;
-                    fireFuel = true;
-                    playerSounds.loop = true;
-                    playerSounds.clip = flameSound;
-                    playerSounds.Play();
+                    //grenade effect when shooting
+                    Instantiate(grenadeSmoke, muzzleSpawn.position, muzzleSpawn.rotation);
+
+                    //Decrease grenade ammo
+                    SaveScript.UpdateAmmo(3, ammoDecrease);
+
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                    if (Physics.Raycast(ray, out hit, 1000, ~playerLayerMask))
+                    {
+                        StartCoroutine(Grenade());
+                    }
 
                 }
             }
 
-
-            if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0) || !SaveScript.hasWeapon)
+            //FireStream Weap
+            if (SaveScript.weaponID == 4)
             {
-                flameStream.gameObject.SetActive(false);
-                fireFuel = false;
-                rapidPlay = true;
-                playerSounds.loop = false;
-                playerSounds.Stop();
+                isShooting = (Input.GetMouseButton(1) && Input.GetMouseButtonDown(0) && SaveScript.hasWeapon);
+                if (isShooting)
+                {
+                    flameStream.gameObject.SetActive(true);
+                    if (rapidPlay)
+                    {
+                        rapidPlay = false;
+                        fireFuel = true;
+                        playerSounds.loop = true;
+                        playerSounds.clip = flameSound;
+                        playerSounds.Play();
+
+                    }
+                }
+
+
+                if (Input.GetMouseButtonUp(1) || Input.GetMouseButtonUp(0) || !SaveScript.hasWeapon)
+                {
+                    flameStream.gameObject.SetActive(false);
+                    fireFuel = false;
+                    rapidPlay = true;
+                    playerSounds.loop = false;
+                    playerSounds.Stop();
+                }
+
+
+                if (fireFuel)
+                {
+                    SaveScript.UpdateAmmo(4, ammoDecrease);
+                }
+
+
             }
 
 
-            if (fireFuel)
-            {
-                SaveScript.UpdateAmmo(4,ammoDecrease);
-            }
-
-
-        }
-
+        }//end of !isPlayerDead
 
     }
 
