@@ -206,6 +206,13 @@ public class PlayerShooting : MonoBehaviour
                 }
             }
 
+            if (hit.transform.CompareTag("Boss"))
+            {
+                Instantiate(bloodImpact, hit.point, Quaternion.LookRotation(hit.normal));
+                hit.transform.gameObject.SendMessage("GetHit");
+
+            }
+
         }
 
     }

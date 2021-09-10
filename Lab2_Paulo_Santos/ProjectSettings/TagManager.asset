@@ -16,6 +16,7 @@ TagManager:
   - EnemyCap
   - B_Explosion
   - HealthPickup
+  - Boss
   layers:
   - Default
   - TransparentFX

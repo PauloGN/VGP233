@@ -7,9 +7,12 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private GameObject[] slowEnemies;
     [SerializeField] private GameObject[] fastEnemies;
     [SerializeField] private Transform spawnPlace;
-    [SerializeField] GameObject burnOutFX;
-    [SerializeField] GameObject sparks;
-    [SerializeField] ParticleSystem explosion;
+    [SerializeField]private GameObject burnOutFX;
+    [SerializeField]private GameObject sparks;
+    [SerializeField]private ParticleSystem explosion;
+    [SerializeField]private AudioClip fireFlame;
+    
+    private AudioSource myAudio;
 
     private bool canSpawn = true;
     private int spawnPointResistance = 30;
@@ -32,6 +35,9 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        myAudio = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -99,6 +105,8 @@ public class EnemySpawn : MonoBehaviour
         //Destroy Spawn point and reset counter for new waves
         if(spawnPointResistance <= 15)
         {
+            myAudio.clip = fireFlame;
+            myAudio.Play();
             sparks.SetActive(true);
             if (spawnPointResistance <= 0)
             {
