@@ -9,10 +9,24 @@ public class BossMove : MonoBehaviour
     //animator reference
     private Animator amim;
     private int spawnIDX;
+    private bool attack = false;
+
 
     [SerializeField] float rotationSpeed = 2.0f;
     [SerializeField] GameObject[] spwanPoints;
     [SerializeField] float disappearTime = 1.0f;
+
+
+    //Spawn blob to attack the player
+    [SerializeField] Transform spawnBlobTransform;
+    [SerializeField] GameObject radiationBlob;
+    [SerializeField] float pauseBetweenAttacks = 3.0f;
+
+    //Audios
+    private AudioSource myAudio;
+    [SerializeField] private AudioClip attackingSound;
+    [SerializeField] private AudioClip getHitSound;
+    [SerializeField] private AudioClip defeatedSound;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +35,25 @@ public class BossMove : MonoBehaviour
         playerRef = GameObject.FindGameObjectWithTag("Player");
         //
         amim = GetComponent<Animator>();
+        //
+        myAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         AlwaysFacigTarget();
+        Attack();
     }
 
+
+    public void BlobSpawn()
+    {
+        Instantiate(radiationBlob, spawnBlobTransform.position, spawnBlobTransform.rotation);
+        myAudio.clip = attackingSound;
+        myAudio.pitch = 0.6f;
+        myAudio.Play();
+    }
 
     private void AlwaysFacigTarget()
     {
@@ -44,6 +69,9 @@ public class BossMove : MonoBehaviour
     {
         amim.SetTrigger("Damage");
         GenerateSpawnIDX();
+        myAudio.clip = getHitSound;
+        myAudio.pitch = 1.4f;
+        myAudio.Play();
         StartCoroutine(TakeDamage());
     }
 
@@ -57,6 +85,23 @@ public class BossMove : MonoBehaviour
     {
         yield return new WaitForSeconds(disappearTime);
         Respawn();
+    }
+
+    private void Attack()
+    {
+        if (!attack)
+        {
+            attack = true;
+            StartCoroutine(AttackPlayer());
+        }
+    }
+
+
+    IEnumerator AttackPlayer()
+    {
+        yield return new WaitForSeconds(pauseBetweenAttacks);
+        amim.SetTrigger("BossAttack");
+        attack = false;
     }
 
 }
