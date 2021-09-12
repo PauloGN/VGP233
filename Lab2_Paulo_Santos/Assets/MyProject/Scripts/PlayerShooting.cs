@@ -210,7 +210,6 @@ public class PlayerShooting : MonoBehaviour
             {
                 Instantiate(bloodImpact, hit.point, Quaternion.LookRotation(hit.normal));
                 hit.transform.gameObject.SendMessage("GetHit");
-
             }
 
         }

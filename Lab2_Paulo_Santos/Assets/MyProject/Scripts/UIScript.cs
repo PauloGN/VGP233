@@ -12,8 +12,12 @@ public class UIScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI ammo;
     //show the type of ammo
     [SerializeField] TextMeshProUGUI ammoLabel;
+    //Show Player Info
     [SerializeField] TextMeshProUGUI playerHealth;
     [SerializeField] TextMeshProUGUI myScore;
+    //Show Boss info
+    [SerializeField] Image bossHealthBar;
+
 
     //Death Panel
     [SerializeField] private GameObject deathPanel;
@@ -32,6 +36,10 @@ public class UIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Shows the boss health bar
+        bossHealthBar.fillAmount = SaveScript.bossHealthRepresentation;
+        
         //update weapon name, health and score on UI
         weaponType.text = SaveScript.weaponName;
         playerHealth.text = SaveScript.health.ToString();

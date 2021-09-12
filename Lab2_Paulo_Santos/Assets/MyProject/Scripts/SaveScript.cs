@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 public class SaveScript : MonoBehaviour
 {
 
+    //================  Boss info ======================\\
+
+    private const float bossMaxHealth = 100.0f;
+    public static float bossHealth = bossMaxHealth;
+    public static float bossHealthRepresentation;
+
     struct WeaponInfo
     { 
       //setters for UI
@@ -51,6 +57,7 @@ public class SaveScript : MonoBehaviour
         machineGun = new WeaponInfo("Machine Gun",0, false, 3.0f);
         grenadeLaucher = new WeaponInfo("Grenade Laucher", 0, false,35.0f);
         flameThrower = new WeaponInfo("Flame Thrower", 0, false,35.0f);
+
 
         ResetValues();   
 
@@ -206,7 +213,7 @@ public class SaveScript : MonoBehaviour
 
     }
 
-   
+   // player pick up informations
    public static void HealthPickup( )
     {
 
@@ -219,6 +226,8 @@ public class SaveScript : MonoBehaviour
 
     }
 
+    
+   //Player health informations
    public static void TakeDamage( int dmg)
     {
         health -= dmg;
@@ -231,19 +240,37 @@ public class SaveScript : MonoBehaviour
         }
     }
 
+    //loads the scene when game starts
+
     public void PlayAgain()
     {
         SceneManager.LoadScene(0);
     }
 
+    //Reset values every time that the game starts
+
     private void ResetValues()
     {
+
         Cursor.visible = false;
         isPlayerDead = false;
         score = 0;
         health = maxHealth;
         enemiesCounter = 0;
         weaponID = 1;//rifle
+        //Boss Values
+        bossHealth = bossMaxHealth;
+        bossHealthRepresentation = bossHealth / bossMaxHealth;
     }
+
+    //=========================  Boss Functions =========================\\
+
+    public static void BossTakeDamage(float dmg)
+    {
+        bossHealth -= dmg;
+        //normalize value to represent on UI
+        bossHealthRepresentation = bossHealth / bossMaxHealth;
+    }
+
 
 }

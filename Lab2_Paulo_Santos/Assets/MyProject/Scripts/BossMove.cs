@@ -11,6 +11,10 @@ public class BossMove : MonoBehaviour
     private int spawnIDX;
     private bool attack = false;
 
+    //Delay controll
+    private float delayTime = 0.0f;
+    private const float resetDelay = 1.0f;
+
 
     [SerializeField] float rotationSpeed = 2.0f;
     [SerializeField] GameObject[] spwanPoints;
@@ -72,7 +76,7 @@ public class BossMove : MonoBehaviour
         myAudio.clip = getHitSound;
         myAudio.pitch = 1.4f;
         myAudio.Play();
-        StartCoroutine(TakeDamage());
+        StartCoroutine(TakeDamage(SaveScript.weapDMG));
     }
 
     private void Respawn()
@@ -80,9 +84,11 @@ public class BossMove : MonoBehaviour
         gameObject.transform.position = spwanPoints[spawnIDX].transform.position;
     }
 
-
-    IEnumerator TakeDamage()
+    //Called every time that the boss is damaged
+    IEnumerator TakeDamage(float dmg)
     {
+        const float dmgControll = 0.2f;
+        SaveScript.BossTakeDamage(dmg * dmgControll);
         yield return new WaitForSeconds(disappearTime);
         Respawn();
     }
@@ -96,12 +102,37 @@ public class BossMove : MonoBehaviour
         }
     }
 
-
+    //
     IEnumerator AttackPlayer()
     {
         yield return new WaitForSeconds(pauseBetweenAttacks);
         amim.SetTrigger("BossAttack");
         attack = false;
     }
+
+    //Observes if the damage caused to the boss was by flame or explosion
+    private void OnParticleCollision(GameObject other)
+    {
+
+        delayTime -= Time.deltaTime;
+
+        if ( delayTime <= 0.0f)
+        {   
+            
+            //Checks if the damage is causede by a barrel explosion or Flame thrower
+            if (other.CompareTag("B_Explosion"))
+            {
+                GetHit();
+            }
+            else
+            {
+                GetHit();
+            }
+
+            delayTime = resetDelay;
+        }
+
+    }
+
 
 }
