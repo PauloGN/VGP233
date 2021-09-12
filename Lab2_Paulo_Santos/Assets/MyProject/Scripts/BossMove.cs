@@ -46,17 +46,27 @@ public class BossMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AlwaysFacigTarget();
-        Attack();
+        if (!SaveScript.isPlayerDead)
+        {
+            AlwaysFacigTarget();
+            Attack();
+        }
     }
 
 
     public void BlobSpawn()
     {
-        Instantiate(radiationBlob, spawnBlobTransform.position, spawnBlobTransform.rotation);
-        myAudio.clip = attackingSound;
-        myAudio.pitch = 0.6f;
-        myAudio.Play();
+
+        bool isGameRuning = (!SaveScript.isPlayerDead && SaveScript.bossHealth > 0.0f);
+
+        if (isGameRuning)
+        {
+            Instantiate(radiationBlob, spawnBlobTransform.position, spawnBlobTransform.rotation);
+            myAudio.clip = attackingSound;
+            myAudio.pitch = 0.6f;
+            myAudio.Play();
+        }
+
     }
 
     private void AlwaysFacigTarget()
@@ -77,6 +87,14 @@ public class BossMove : MonoBehaviour
         myAudio.pitch = 1.4f;
         myAudio.Play();
         StartCoroutine(TakeDamage(SaveScript.weapDMG));
+
+        if(SaveScript.bossHealth <= 0)
+        {
+            myAudio.clip = defeatedSound;
+            myAudio.pitch = 1.0f;
+            myAudio.Play();
+        }
+
     }
 
     private void Respawn()

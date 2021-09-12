@@ -21,6 +21,7 @@ public class UIScript : MonoBehaviour
 
     //Death Panel
     [SerializeField] private GameObject deathPanel;
+    [SerializeField] private GameObject winPanel;
 
 
     //Labels to type of ammunition
@@ -57,12 +58,21 @@ public class UIScript : MonoBehaviour
             ammo.text = SaveScript.ammoAmount.ToString();
         }
 
-
-        if (SaveScript.isPlayerDead)
+        //lose Condition
+        if (SaveScript.health<=0 && SaveScript.isPlayerDead)
         {
             deathPanel.SetActive(true);
         }
 
+        //Win Condition
+        if (SaveScript.bossHealth <= 0)
+        {
+            
+            winPanel.SetActive(true);
+            Cursor.visible = true;
+            //just to disable everything else;
+            SaveScript.isPlayerDead = true;
+        }
 
     }
 

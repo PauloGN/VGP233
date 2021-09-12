@@ -12,6 +12,7 @@ public class SaveScript : MonoBehaviour
     public static float bossHealth = bossMaxHealth;
     public static float bossHealthRepresentation;
 
+    //=====================================================\\
     struct WeaponInfo
     { 
       //setters for UI
@@ -26,6 +27,7 @@ public class SaveScript : MonoBehaviour
 
     // 1 = Rifle / 2 = RapidWeap / 3 = Grenade / 4 = Flame thrower
     public static int weaponID = 1;
+
     //List of Weapons
     static WeaponInfo rifle;
     static WeaponInfo machineGun;
@@ -37,13 +39,13 @@ public class SaveScript : MonoBehaviour
     public static float ammoAmount;
     public static bool hasWeapon;
     public static float weapDMG;
+
     //Player Health and Player Score
     public static int health;
     public static int score = 0;
     public static bool isPlayerDead = false;
 
     //Controls Variables
-
     public static int enemiesCounter = 0;
     public const int healthRestore = 20;
     public const int maxHealth = 100;
@@ -68,7 +70,7 @@ public class SaveScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            health = 0;
+            bossHealth = 1.0f;
         }
 
         UpdateWeaponInfo();
@@ -270,6 +272,14 @@ public class SaveScript : MonoBehaviour
         bossHealth -= dmg;
         //normalize value to represent on UI
         bossHealthRepresentation = bossHealth / bossMaxHealth;
+
+        if (bossHealth <= 0)
+        {
+            const int winPoints = 25000;
+            score += winPoints;
+        }
+        
+
     }
 
 

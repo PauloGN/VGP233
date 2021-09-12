@@ -32,9 +32,13 @@ public class BlobMove : MonoBehaviour
 
     void Update()
     {
-        // Set enemy blob towards player and move there
-        Vector3 lookDirection = ((playerPos.position + offSetY) - transform.position).normalized;
-        transform.position += lookDirection * Time.deltaTime * moveSpeed;
+        if (!SaveScript.isPlayerDead)
+        {
+            // Set enemy blob towards player and move there
+            Vector3 lookDirection = ((playerPos.position + offSetY) - transform.position).normalized;
+            transform.position += lookDirection * Time.deltaTime * moveSpeed;
+        }
+
     }
 
 
