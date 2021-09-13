@@ -11,9 +11,11 @@ public class AcivateSpawn : MonoBehaviour
     private AudioSource myAudio;
 
     private float destroyDelay = 8.0f;
+    private bool isPlayingAudio;
 
     private void Start()
     {
+        isPlayingAudio = false;
         myAudio = GetComponent<AudioSource>();
     }
 
@@ -23,11 +25,15 @@ public class AcivateSpawn : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            int idx = Random.Range(0, bossAudio.Length);
+            if (!isPlayingAudio)
+            {
+                isPlayingAudio = true;
+                int idx = Random.Range(0, bossAudio.Length);
 
-            spawnPoint.SetActive(true);
-            myAudio.PlayOneShot(bossAudio[idx]);
-            Destroy(gameObject, destroyDelay);
+                spawnPoint.SetActive(true);
+                myAudio.PlayOneShot(bossAudio[idx]);
+                Destroy(gameObject, destroyDelay);
+            }
 
         }
 

@@ -49,6 +49,7 @@ public class SaveScript : MonoBehaviour
     public static int enemiesCounter = 0;
     public const int healthRestore = 20;
     public const int maxHealth = 100;
+    public static bool winScore;
 
     // Start is called before the first frame update
     void Start()
@@ -67,9 +68,11 @@ public class SaveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+
+        //Force to enter on Menu
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            bossHealth = 1.0f;
+            MainMenu();
         }
 
         UpdateWeaponInfo();
@@ -238,21 +241,29 @@ public class SaveScript : MonoBehaviour
             isPlayerDead = true;
             health = 0;
             Cursor.visible = true;
+            winScore = true;
         }
     }
 
-    //loads the scene when game starts
+    //load scenes 
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene(0);
+        //Reload the game
+        SceneManager.LoadScene("Main_Scene");
+    }
+
+    public void MainMenu()
+    {
+        //Load the main menu
+        SceneManager.LoadScene("MainMenu");
     }
 
     //Reset values every time that the game starts
 
     private void ResetValues()
     {
-
+        winScore = false;
         Cursor.visible = false;
         isPlayerDead = false;
         score = 0;
@@ -276,6 +287,7 @@ public class SaveScript : MonoBehaviour
         {
             const int winPoints = 25000;
             score += winPoints;
+            winScore = true;
         }
         
 

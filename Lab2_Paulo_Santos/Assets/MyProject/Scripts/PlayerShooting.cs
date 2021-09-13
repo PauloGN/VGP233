@@ -171,6 +171,7 @@ void Update()
         }//end of !isPlayerDead
         else if(SaveScript.isPlayerDead && !isGameOver)
         {
+            playerSounds.Stop();
             isGameOver = true;
             playerSounds.PlayOneShot(gameOverSound);
         }

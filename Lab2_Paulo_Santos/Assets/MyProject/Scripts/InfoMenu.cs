@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
+
 
 public class InfoMenu : MonoBehaviour
 {
@@ -11,6 +11,6 @@ public class InfoMenu : MonoBehaviour
     public void MainMenu()
     {
         //Open The main menu
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("MainMenu");
     }
 }

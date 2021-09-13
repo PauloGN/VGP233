@@ -12,19 +12,19 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myHighScore.text = SaveHighScore.highScore.ToString("n0");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        myHighScore.text = SaveHighScore.highScore.ToString("n0");
     }
 
     public void Play()
     {
         //Open The main Scene
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Main_Scene");
     }
 
     //Game Buttons aplication
@@ -32,7 +32,7 @@ public class Menu : MonoBehaviour
     public void ShowGameInfo()
     {
         //Open game information
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("InfoMenu");
 
     }
 
