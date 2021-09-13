@@ -27,7 +27,6 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-
     //Game Buttons aplication
 
     public void ShowGameInfo()
