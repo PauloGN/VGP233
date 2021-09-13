@@ -42,11 +42,11 @@ public class BlobMove : MonoBehaviour
     }
 
 
-
+    //Destroy the object if it hits the wall or cause damage to the player in case of collision against the player.
     private void OnTriggerEnter(Collider other)
     {
 
-
+        //Wall collision
         if (other.CompareTag("Stone"))
         {
             if (canHitSomething)
@@ -57,7 +57,7 @@ public class BlobMove : MonoBehaviour
 
         }
 
-
+        //player collision
         if (other.CompareTag("Player"))
         {
             if (canHitSomething)
@@ -82,7 +82,7 @@ public class BlobMove : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //Hit wall
+    //Hit wall destroy obj
 
     private IEnumerator HitWall()
     {

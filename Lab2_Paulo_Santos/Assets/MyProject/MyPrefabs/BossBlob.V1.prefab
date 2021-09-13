@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a70a555b33986409d1cdf90a71d1da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay2Destroy: 3
+  delay2Destroy: 7
 --- !u!114 &6180405752723135094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acidSound: {fileID: 8300000, guid: 7c082555a7bd5ce48b8180f5dacf17c3, type: 3}
   moveSpeed: 5
-  bossDMG: 2
+  bossDMG: 5
 --- !u!82 &3703605021918401222
 AudioSource:
   m_ObjectHideFlags: 0

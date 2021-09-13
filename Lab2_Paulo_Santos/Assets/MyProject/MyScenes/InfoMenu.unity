@@ -789,8 +789,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -615, y: -44}
-  m_SizeDelta: {x: 391.7461, y: 332.98}
+  m_AnchoredPosition: {x: -623.8232, y: -78.048}
+  m_SizeDelta: {x: 409.3924, y: 401.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &905532797
 MonoBehaviour:
@@ -822,7 +822,10 @@ MonoBehaviour:
 
 
     Left
-    click to fire'
+    click to fire
+
+
+    Left Shift to Run'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d9243f39a2437fc45adc037bc08d4448, type: 2}
   m_sharedMaterial: {fileID: 905132193823342017, guid: d9243f39a2437fc45adc037bc08d4448,
@@ -1685,7 +1688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5254902}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5372549}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

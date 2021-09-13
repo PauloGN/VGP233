@@ -37,7 +37,7 @@ public class PlayerShooting : MonoBehaviour
     private const int ammoDecrease = 1;
     private bool fireFuel = false;
 
-
+    //physics
     RaycastHit hit;
 
     // Start is called before the first frame update
@@ -46,10 +46,10 @@ public class PlayerShooting : MonoBehaviour
         playerSounds = GetComponent<AudioSource>();
         isGameOver = false;
 
-}
+    }
 
-// Update is called once per frame
-void Update()
+    // Update is called once per frame
+    void Update()
     {
 
         if (!SaveScript.isPlayerDead)

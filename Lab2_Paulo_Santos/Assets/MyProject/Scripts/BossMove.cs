@@ -11,7 +11,7 @@ public class BossMove : MonoBehaviour
     private int spawnIDX;
     private bool attack = false;
 
-    //Delay controll
+    //Delay controll to control flame damage from particles
     private float delayTime = 0.0f;
     private const float resetDelay = 1.0f;
 
