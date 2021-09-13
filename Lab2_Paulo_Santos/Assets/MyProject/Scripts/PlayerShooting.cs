@@ -17,9 +17,11 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]private AudioClip grenadeSound;
     [SerializeField]private AudioClip flameSound;
     [SerializeField]private AudioClip pickUpSound;
+    [SerializeField]private AudioClip gameOverSound;
     //variables of control
     private bool rapidPlay = true;
     private bool shooting = true;
+    private bool isGameOver;
     [SerializeField]private float rapidDelay = 0.2f;
     //Grenades
     [SerializeField] private GameObject grenadeSmoke;
@@ -42,10 +44,12 @@ public class PlayerShooting : MonoBehaviour
     void Start()
     {
         playerSounds = GetComponent<AudioSource>();
-    }
+        isGameOver = false;
 
-    // Update is called once per frame
-    void Update()
+}
+
+// Update is called once per frame
+void Update()
     {
 
         if (!SaveScript.isPlayerDead)
@@ -165,6 +169,11 @@ public class PlayerShooting : MonoBehaviour
 
 
         }//end of !isPlayerDead
+        else if(SaveScript.isPlayerDead && !isGameOver)
+        {
+            isGameOver = true;
+            playerSounds.PlayOneShot(gameOverSound);
+        }
 
     }
 

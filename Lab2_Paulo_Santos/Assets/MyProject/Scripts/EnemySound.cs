@@ -52,7 +52,11 @@ public class EnemySound : MonoBehaviour
 
             }
 
-        }      
+        }
+        else
+        {
+            enemyAudio.Stop();
+        }   
     }
 
     //Time to change the sounds 

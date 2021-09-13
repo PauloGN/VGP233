@@ -1517,6 +1517,7 @@ MonoBehaviour:
   grenadeSound: {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
   flameSound: {fileID: 8300000, guid: 74d4922ad0878eb499df68fcfeac3690, type: 3}
   pickUpSound: {fileID: 8300000, guid: 8720072ae4d7e9c42b137210e7606b03, type: 3}
+  gameOverSound: {fileID: 8300000, guid: dbef6e96ce80f8142928eb220155d47c, type: 3}
   rapidDelay: 0.1
   grenadeSmoke: {fileID: 7026979197153906382, guid: 29e61b9c0af2f194ea5e10e4d77cd83b,
     type: 3}

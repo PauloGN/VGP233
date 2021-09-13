@@ -60,7 +60,6 @@ public class SaveScript : MonoBehaviour
         grenadeLaucher = new WeaponInfo("Grenade Laucher", 0, false,35.0f);
         flameThrower = new WeaponInfo("Flame Thrower", 0, false,35.0f);
 
-
         ResetValues();   
 
     }

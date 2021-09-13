@@ -10995,7 +10995,7 @@ Transform:
   m_GameObject: {fileID: 4721713258218739479}
   m_LocalRotation: {x: 0, y: 0.72091407, z: 0, w: 0.69302446}
   m_LocalPosition: {x: 24.121887, y: 6.2422476, z: -0.48397636}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6922905, y: 1, z: 0.8209576}
   m_Children:
   - {fileID: 1078259662928521777}
   - {fileID: 8542407929226603099}
@@ -11078,6 +11078,7 @@ MonoBehaviour:
   points2KillThis: 100
   enemyType: 0
   health: 35
+  rotationSpeed: 2
   isDead: 0
 --- !u!208 &1510077422
 NavMeshObstacle:
