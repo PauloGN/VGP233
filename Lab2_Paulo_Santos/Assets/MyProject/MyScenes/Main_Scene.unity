@@ -1368,6 +1368,11 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1691883694}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: d0154fdc546a01b4db154bee8f289282, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4808f3b6677dd64193225225d42d843, type: 3}
 --- !u!4 &37873773 stripped
@@ -15047,6 +15052,11 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 956979280}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f1856aa09770e44e9de1f82bda4e3d0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4808f3b6677dd64193225225d42d843, type: 3}
 --- !u!4 &469813342 stripped
@@ -16115,6 +16125,11 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 313188046}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: d0154fdc546a01b4db154bee8f289282, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4808f3b6677dd64193225225d42d843, type: 3}
 --- !u!4 &496373936 stripped
@@ -18689,6 +18704,21 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1258759303}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: d0154fdc546a01b4db154bee8f289282, type: 3}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f1856aa09770e44e9de1f82bda4e3d0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4808f3b6677dd64193225225d42d843, type: 3}
 --- !u!4 &583435355 stripped
@@ -36553,6 +36583,26 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1901575056}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5f7475254b1333a40872098b2f9eab72, type: 3}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: d0154fdc546a01b4db154bee8f289282, type: 3}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: d0154fdc546a01b4db154bee8f289282, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4808f3b6677dd64193225225d42d843, type: 3}
 --- !u!4 &1126113722 stripped
@@ -37422,8 +37472,8 @@ Transform:
   - {fileID: 1213535841}
   - {fileID: 1484421833}
   - {fileID: 584429526}
-  - {fileID: 1651524965}
   - {fileID: 1472580105}
+  - {fileID: 1651524965}
   - {fileID: 34414869}
   - {fileID: 2047223383}
   - {fileID: 1737289820}
@@ -51184,6 +51234,11 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 765711087}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: d0154fdc546a01b4db154bee8f289282, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4808f3b6677dd64193225225d42d843, type: 3}
 --- !u!4 &1605261769 stripped
@@ -60213,6 +60268,11 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 2064281078}
+    - target: {fileID: 839555527725459129, guid: b4808f3b6677dd64193225225d42d843,
+        type: 3}
+      propertyPath: bossAudio.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f1856aa09770e44e9de1f82bda4e3d0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4808f3b6677dd64193225225d42d843, type: 3}
 --- !u!4 &1912217800 stripped
