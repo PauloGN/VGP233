@@ -7,6 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class InfoMenu : MonoBehaviour
 {
+
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
+
     // Back to menu
     public void MainMenu()
     {
