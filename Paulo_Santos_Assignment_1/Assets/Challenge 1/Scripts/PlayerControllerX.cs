@@ -27,7 +27,7 @@ public class PlayerControllerX : MonoBehaviour
         // Checks input values to prevent the plane from automatically tilting
         if (verticalInput != 0)
         {
-            transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime * verticalInput);
+           transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime * verticalInput);
         }
        
     }
