@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    [SerializeField]private float playerSpeed = 20.0f;
+    
+    // The one that will be spawned by the player
     public GameObject projectTilePrefab;
 
-    private float speed = 20.0f;
     private float horizontalInput;
     private float xRange = 18.5f;
     private Vector3 add_Y_Height;
@@ -24,8 +25,8 @@ public class PlayerController : MonoBehaviour
     {
         //Get input from keyboard from -1(left) to +1(right) in this case
         horizontalInput = Input.GetAxis("Horizontal");
-        //translates the player from left to right based on the keyboard input times direction given by the vector time delatatime times speed
-        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+        //translates the player from left to right based on the keyboard input times direction given by the vector times deltaTime times PlayerSpeed
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * playerSpeed);
 
         //Checks the boundary on axis X (prevents character to move outof the setted range hold by the xRange variable)
         if(transform.position.x < -xRange)
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     }
 }
+
 
 /*
         Observations 

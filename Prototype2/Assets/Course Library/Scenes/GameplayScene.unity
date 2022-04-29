@@ -620,6 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a8fa2385d140c4d8041b55f8626344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpeed: 20
   projectTilePrefab: {fileID: 978541379065502018, guid: 127f62f2ee0af73449594379497c5a15, type: 3}
 --- !u!1 &607354440
 GameObject:
@@ -2963,15 +2964,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013040751570, guid: de0d59d93e2cfe543b798cd56fd59da4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.12091696
       objectReference: {fileID: 0}
     - target: {fileID: 4000013040751570, guid: de0d59d93e2cfe543b798cd56fd59da4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4000013040751570, guid: de0d59d93e2cfe543b798cd56fd59da4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7
+      value: -5.677359
       objectReference: {fileID: 0}
     - target: {fileID: 4000013040751570, guid: de0d59d93e2cfe543b798cd56fd59da4, type: 3}
       propertyPath: m_LocalRotation.w
