@@ -8,15 +8,15 @@ public class SpawnManager : MonoBehaviour
 
     private float spawnRangeInX = 18.0f;
     private float positionZ = 20;
-    private float start = 1.5f;
-    private float delay = 2.0f;
+    private float startDelay = 1.5f;
+    private float repetitionRate = 2.0f;
     
     // Start is called before the first frame update
 
     private void Start()
     {
 
-        InvokeRepeating("SpawnAnimal", start, delay);
+        InvokeRepeating("SpawnAnimal", startDelay, repetitionRate);
 
     }
 
