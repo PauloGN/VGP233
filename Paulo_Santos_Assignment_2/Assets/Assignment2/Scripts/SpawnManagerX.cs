@@ -6,18 +6,19 @@ public class SpawnManagerX : MonoBehaviour
 {
     public GameObject[] ballPrefabs;
 
+    private float spawnInterval;
     private float spawnLimitXLeft = -22.0f;
     private float spawnLimitXRight = 7.0f;
     private float spawnPosY = 30.0f;
 
     private float startDelay = 1.0f;
-    private float spawnInterval = Random.Range(3.0f, 5.0f);
     private float timeControl = 0.0f;
 
     // Start is called before the first frame update
     void Start()
-    { 
-       // InvokeRepeating("SpawnRandomBall", startDelay, spawnInterval);
+    {
+        //InvokeRepeating("SpawnRandomBall", startDelay, spawnInterval);
+        spawnInterval = Random.Range(3.0f, 5.0f);
     }
 
 

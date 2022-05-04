@@ -46,6 +46,14 @@ public class PlayerController : MonoBehaviour
         //vector3.up is the angle the it is going to rotate around in this case is Y/Up, angle is the amount to rotate in a given angle
 
     }
+
+
+    public float GetForwardInputValue()
+    {
+        return forwardInput;
+    }
+
+
 }
 
 
