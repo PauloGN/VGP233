@@ -5,6 +5,7 @@ using UnityEngine;
 public class RotateWheels : MonoBehaviour
 {
 
+    [SerializeField] int _wheelRotationSpeed = 400;
     PlayerController playerControllerREF = null;
 
     // Start is called before the first frame update
@@ -19,10 +20,9 @@ public class RotateWheels : MonoBehaviour
         
         if(playerControllerREF != null)
         {
+          float speed = playerControllerREF.GetForwardInputValue();
+          transform.Rotate(Vector3.right, Time.deltaTime * speed * _wheelRotationSpeed);
         }
 
-          float speed = playerControllerREF.GetForwardInputValue();
-          transform.Rotate(Vector3.right, Time.deltaTime * speed * 400.0f);
-        
     }
 }

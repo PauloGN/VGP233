@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         //translates the player from left to right based on the keyboard input times direction given by the vector times deltaTime times PlayerSpeed
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * playerSpeed);
 
-        //Checks the boundary on axis X (prevents character to move outof the setted range hold by the xRange variable)
+        //Checks the boundary on axis X (prevents character to move outof the setted range held by the xRange variable)
         if(transform.position.x < -xRange)
         {
             transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);

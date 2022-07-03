@@ -38,8 +38,7 @@ public class SpawnManager : MonoBehaviour
     }
 }
 
-/*
-                           1*         2*     3*
+/*                           1*         2*     3*
      InvokeRepeating("SpawnAnimal", start, delay);
  
    1 - "SpawnAnimal" => this is the name of the funciotn the has been invoked

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControllerX : MonoBehaviour
 {
     public GameObject dogPrefab;
-    //This time can be defined on the Unity interface by default as 0 the same minimum ball spawning interval
+    //This time can be defined on the Unity interface by default as 0 the same as the minimum ball spawning interval
     public float dogInterval = 3.0f;
 
     private float timeControl = 0.0f;
