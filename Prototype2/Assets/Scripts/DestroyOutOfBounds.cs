@@ -19,7 +19,5 @@ public class DestroyOutOfBounds : MonoBehaviour
             Debug.Log("FOI PRO SACO.....(Game Over!)");
             Destroy(gameObject);
         }
-
-
     }
 }

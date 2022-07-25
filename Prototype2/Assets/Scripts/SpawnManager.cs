@@ -26,9 +26,8 @@ public class SpawnManager : MonoBehaviour
         int animalIndex = Random.Range(0, animalPrefabs.Length);
         // gets a random value in X to fill the next position that an animal should spawn, fixed value in Y(height) and Z
         Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeInX, spawnRangeInX), 0.0f, positionZ);
-        // instantiates the random anima in a randon position + plus the animal saved rotation 
+        // instantiates the random animal in a randon position + plus the animal saved rotation 
         Instantiate(animalPrefabs[animalIndex], spawnPos, animalPrefabs[animalIndex].transform.rotation);
-
     }
 
     // Update is called once per frame
