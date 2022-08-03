@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]private float playerSpeed = 20.0f;
+    [SerializeField] float playerSpeed = 20.0f;
     
     // The one that will be spawned by the player
     public GameObject projectTilePrefab;
