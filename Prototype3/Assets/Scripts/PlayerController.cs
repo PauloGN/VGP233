@@ -6,13 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRB;
     private Animator playerAnim;
-    private float animSpeed = 0.6f;
     private AudioSource myAudioEffects;
 
     public AudioClip jumpSound;
     public AudioClip crashSound;
     public ParticleSystem explosionParticle;
     public ParticleSystem stepsDirtParticle;
+
+    private float animSpeed = 0.6f;
     public float jumpForce = 1000.0f;
     public float gravityModifier;
     public bool isOnGround = true;
@@ -23,17 +24,14 @@ public class PlayerController : MonoBehaviour
     {
         //if a rigidBody component is found inside the player controller it will be asigned in the variable
         playerRB = GetComponent<Rigidbody>();
-
-        //access the physics of the engine and modify it.
-        Physics.gravity *= gravityModifier;
-
         //Gets the animator propreties from the hierarc gameobject
         playerAnim = GetComponent<Animator>();
-
+        //Gets audio source comp
+        myAudioEffects = GetComponent<AudioSource>();
+        //access the physics of the engine and modify it.
+        Physics.gravity *= gravityModifier;
         //Setting values to the Animator parameters, this will change the intern states acording to the rules of transitions
         playerAnim.SetFloat("Speed_f",animSpeed);
-
-        myAudioEffects = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -47,17 +45,14 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetTrigger("Jump_trig");
             stepsDirtParticle.Stop();
             myAudioEffects.PlayOneShot(jumpSound,1.0f);//audio clip/volume percentage
-            
             isOnGround = false;
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
     {
 
         //Using compare tag functions to find a particular property of a specific gameObject
-
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
@@ -74,6 +69,5 @@ public class PlayerController : MonoBehaviour
 
             Debug.Log("Game over....");
         }
-
     }
 }

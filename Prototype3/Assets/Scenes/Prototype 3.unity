@@ -461,12 +461,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 640fa9e54570b4acbbc4acf8f3bf8663, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66ce0fda7508547d2be6b20eac53f119, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 40.96, y: 40.96}
+  m_Size: {x: 112.79999, y: 18.781641}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -533,6 +533,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 160664, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183746, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 187690, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c14bb5ce28dbb7442a2f79d8b6a061ce, type: 3}
       propertyPath: m_RootOrder
@@ -612,8 +624,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.731135, y: 2.7118728, z: 1}
-  m_Center: {x: -0.009358525, y: 1.3972119, z: 2.1970367e-17}
+  m_Size: {x: 1.7, y: 2.7, z: 1.1547849}
+  m_Center: {x: 2.1163436e-16, y: 1.4, z: 0.07739243}
 --- !u!114 &1229402982
 MonoBehaviour:
   m_ObjectHideFlags: 0

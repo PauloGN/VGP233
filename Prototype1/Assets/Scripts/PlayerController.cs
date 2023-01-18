@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         //rotates the car based on horizontal input
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);//Vector3, angle
-        //vector3.up is the angle the it is going to rotate around in this case is Y/Up, angle is the amount to rotate in a given angle
+        //vector3.up is the angle that is going to rotate around in this case is Y/Up, angle is the amount to rotate in a given angle
 
     }
 
