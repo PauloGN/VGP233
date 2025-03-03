@@ -13,8 +13,6 @@ public class FollowPlayer : MonoBehaviour
 
     #endregion
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +26,7 @@ public class FollowPlayer : MonoBehaviour
         {
             Vector3 newPos = player.transform.position + offSet;
             transform.position = newPos;
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, player.transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         }
     }
 }

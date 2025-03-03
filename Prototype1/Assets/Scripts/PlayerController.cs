@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     //[SerializeField]
     private float forwardInput;
 
+    private float frameCounter = 0;
+    private float timer = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +28,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //Set horizontal and vertical axis input
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
@@ -42,6 +45,18 @@ public class PlayerController : MonoBehaviour
         //rotates the car based on horizontal input
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);//Vector3, angle
         //vector3.up is the angle that is going to rotate around in this case is Y/Up, angle is the amount to rotate in a given angle
+
+        // Update the timer and frame counter
+        timer += Time.deltaTime;
+        frameCounter++;
+
+        // Display FPS every second
+        if (timer >= 1.0f)
+        {
+            Debug.Log("FPS: " + frameCounter);
+            timer = 0;
+            frameCounter = 0;
+        }
 
     }
 

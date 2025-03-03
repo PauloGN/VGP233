@@ -7,6 +7,7 @@ public class PlayerControllerX : MonoBehaviour
     private float speed = 15.0f;
     private float rotationSpeed = 100.0f;
     private float verticalInput = 0.0f;
+    Quaternion lastRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,11 @@ public class PlayerControllerX : MonoBehaviour
         if (verticalInput != 0)
         {
            transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime * verticalInput);
+           lastRotation = transform.rotation;
+        }
+        else
+        {
+            transform.rotation = lastRotation;
         }
        
     }
