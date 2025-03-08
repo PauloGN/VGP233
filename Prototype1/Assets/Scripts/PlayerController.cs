@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     //public float speed = 20.0f;// pubic will expose the variable to the unity editor
-    [SerializeField]//also will expose the variable to the unity editor but now the variable is class protected
+    [SerializeField]//also will exposes the variable to the unity editor but now the variable is class protected
     private float speed = 5.0f;
     [SerializeField]
     private float turnSpeed = 15;
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         //moves the car forward based on vertical input
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);//Multiplying by delta time will give us the time control of the rate of movement
 
-        // transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);// moves kind of sliding from lef to right and right to left
+        // transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);// moves kind of sliding from side to side
 
         //transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
 
